@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
-import Box from '@material-ui/core/Box';
 import { useForm, Controller } from 'react-hook-form';
 import { useAuth } from '../../contexts/AuthProvider';
+
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
+import { makeStyles } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -34,6 +35,7 @@ const Form = ({ handleClose }) => {
 	const classes = useStyles();
 	const { handleSubmit, control } = useForm();
 	const { user, signUp, signIn } = useAuth();
+	
 	const [loginSignup, setLoginSignup] = useState('login');
 	const [authError, setAuthError] = useState(null);
 

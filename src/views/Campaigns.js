@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import CampaignCard from '../components/layout/campaigns/CampaignCard'
 import { getCampaigns } from '../services/routes/routes'
+import { useCampaign } from '../contexts/CampaignProvider'
 
 const Campaigns = () => {
-  const [campaigns, setCampaigns] = useState([])
+  const { campaign, setCampaign }= useCampaign()
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await getCampaigns()
-      setCampaigns(res)
+      setCampaign(res)
     }
     fetchData()
   },[])
@@ -16,9 +17,7 @@ const Campaigns = () => {
   return (
     <>
       <div class='m-2 flex '>
-        {campaigns.map(campaign => {
-          return <CampaignCard {...campaign} key={campaign.id} />
-        })}
+        { campaign.map(campaign => <CampaignCard {...campaign} key={campaign.id} />) }
       </div>
     </>
   )

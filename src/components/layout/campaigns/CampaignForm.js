@@ -30,7 +30,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const CampaignForm = ({ campaign, handleClose }) => {
-  console.log(campaign);
   const classes = useStyles()
   const { handleSubmit, reset, control } = useForm()
 
@@ -38,84 +37,86 @@ const CampaignForm = ({ campaign, handleClose }) => {
     console.log(data);
   }
 
-  return(
+  return (
     <form class={classes.root} onSubmit={handleSubmit(onSubmit)}>
-      <Controller 
-        name='name'
+      <Controller
+        name="name"
         control={control}
-        defaultValue=''
+        defaultValue=""
         placeholder={campaign.name}
-      	render={({ field: { onChange, value }, fieldState: { error } }) => (
-					<TextField
+        render={({ field: { onChange, value }, fieldState: { error } }) => (
+          <TextField
             placeholder={campaign.name}
-						variant="outlined"
-						value={value}
-						onChange={onChange}
-						error={!!error}
-						helperText={error ? error.message : null}
-						type="text"
-					/>
-				)}
-        rules={{ required: 'Name required'}}
+            variant="outlined"
+            value={value}
+            onChange={onChange}
+            error={!!error}
+            helperText={error ? error.message : null}
+            type="text"
+          />
+        )}
+        rules={{ required: 'Name required' }}
       />
-      <Controller 
-        name='description'
+      <Controller
+        name="description"
         control={control}
-        defaultValue=''
+        defaultValue=""
         placeholder={campaign.description}
-      	render={({ field: { onChange, value }, fieldState: { error } }) => (
-					<TextField
+        render={({ field: { onChange, value }, fieldState: { error } }) => (
+          <TextField
             placeholder={campaign.description}
-						variant="outlined"
-						value={value}
-						onChange={onChange}
-						error={!!error}
-						helperText={error ? error.message : null}
-						type="text"
-					/>
-				)}
-        rules={{ required: 'Description required'}}
+            variant="outlined"
+            value={value}
+            onChange={onChange}
+            error={!!error}
+            helperText={error ? error.message : null}
+            type="text"
+          />
+        )}
+        rules={{ required: 'Description required' }}
       />
-      <Controller 
-        name='image'
+      <Controller
+        name="image"
         control={control}
-        defaultValue=''
+        defaultValue=""
         placeholder={campaign.image}
-      	render={({ field: { onChange, value }, fieldState: { error } }) => (
-					<TextField
+        render={({ field: { onChange, value }, fieldState: { error } }) => (
+          <TextField
             placeholder={campaign.image}
-						variant="outlined"
-						value={value}
-						onChange={onChange}
-						error={!!error}
-						helperText={error ? error.message : null}
-						type="text"
-					/>
-				)}
-        rules={{ required: 'Image required'}}
+            variant="outlined"
+            value={value}
+            onChange={onChange}
+            error={!!error}
+            helperText={error ? error.message : null}
+            type="text"
+          />
+        )}
+        rules={{ required: 'Image required' }}
       />
-      <Controller 
-        name='gameMaster'
+      <Controller
+        name="gameMaster"
         control={control}
-        defaultValue=''
+        defaultValue=""
         placeholder={campaign.gameMaster}
-      	render={({ field: { onChange, value }, fieldState: { error } }) => (
-					<TextField
+        render={({ field: { onChange, value }, fieldState: { error } }) => (
+          <TextField
             placeholder={campaign.gameMaster}
-						variant="outlined"
-						value={value}
-						onChange={onChange}
-						error={!!error}
-						helperText={error ? error.message : null}
-						type="text"
-					/>
-				)}
-        rules={{ required: 'Game Master required'}}
+            variant="outlined"
+            value={value}
+            onChange={onChange}
+            error={!!error}
+            helperText={error ? error.message : null}
+            type="text"
+          />
+        )}
+        rules={{ required: 'Game Master required' }}
       />
-      <Button type='submit'></Button>
-      <Button onClick={() => reset()} variant={'outlined'}>Reset</Button>
+      <Button type="submit"></Button>
+      <Button onClick={() => reset()} variant={'outlined'}>
+        Reset
+      </Button>
     </form>
-  )
+  );
 }
 
 export default CampaignForm

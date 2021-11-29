@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AuthProvider } from './contexts/AuthProvider';
+import { CampaignProvider } from './contexts/CampaignProvider'
 import './index.css';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
@@ -8,7 +9,9 @@ import App from './App';
 ReactDOM.render(
   // <React.StrictMode>
     <AuthProvider>
-      <App />
+      <CampaignProvider>
+        <App />
+      </CampaignProvider>
     </AuthProvider>,
   // </React.StrictMode>,
   document.getElementById('root')

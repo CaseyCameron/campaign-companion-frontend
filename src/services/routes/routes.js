@@ -1,5 +1,15 @@
 import { checkError, supabase as client } from '../client'
 
+const getCampaignById = async(id) => {
+  const res = await client
+    .from('Campaign')
+    .select('*')
+    .match({ id })
+    .single()
+
+  return checkError(res)
+}
+
 const getCampaigns = async() => {
   const res = await client
     .from('Campaign')
@@ -8,6 +18,7 @@ const getCampaigns = async() => {
 
   return checkError(res)
 }
+
 
 const getNpcs = async() => {
   const res = await client
@@ -18,4 +29,4 @@ const getNpcs = async() => {
   return checkError(res)
 }
 
-export { getCampaigns, getNpcs }
+export { getCampaignById, getCampaigns, getNpcs }

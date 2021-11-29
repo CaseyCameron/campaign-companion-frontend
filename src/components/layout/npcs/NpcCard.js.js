@@ -10,7 +10,7 @@ export default function NpcCard({ id, name, race, alignment, description, image,
         <div><img class='max-w-xs rounded' src={image} alt={name}/></div>
         <div>Race: {race}</div>
         <div>Alignment: {alignment}</div>
-        <div class='flex flex-col text-left'>Description: <textarea class='w-72 pl-5'>{description}</textarea></div>
+        <div class='flex flex-col text-left'>Description: <span class='w-72 pl-5'>{description}</span></div>
         <div >Affiliation: {affiliation}</div>
         <div >Status: {status}</div>
       </Card>

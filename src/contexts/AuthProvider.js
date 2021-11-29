@@ -9,7 +9,6 @@ export const AuthProvider = ({ children }) => {
 
 	useEffect(() => {
 		const session = supabase.auth.session();
-		console.log(session)
 		setUser(session?.user ?? null);
 		setLoading(false);
 

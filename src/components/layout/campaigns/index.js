@@ -1,6 +1,6 @@
 import CampaignCard from './CampaignCard'
 import CampaignDeleteCard from './CampaignDeleteCard'
-import CampaignEditCard from './CampaignSettingsCard'
+import CampaignSettingsCard from './CampaignSettingsCard'
 import CampaignForm from './CampaignForm'
 
-export { CampaignCard, CampaignDeleteCard, CampaignEditCard, CampaignForm }
+export { CampaignCard, CampaignDeleteCard, CampaignSettingsCard, CampaignForm }

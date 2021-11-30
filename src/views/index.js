@@ -1,5 +1,5 @@
-import CampaignDetail from './detail/CampaignDetail';
+import CampaignSettings from './detail/CampaignSettings';
 import Campaigns from './Campaigns';
 import Npcs from './Npcs';
 
-export { CampaignDetail, Campaigns, Npcs };
+export { CampaignSettings, Campaigns, Npcs };

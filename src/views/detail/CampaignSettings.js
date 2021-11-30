@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { CampaignEditCard } from '../../components/layout/campaigns/';
+import { CampaignSettingsCard } from '../../components/layout/campaigns';
 import { getCampaignById } from '../../services/routes/routes';
 import { useCampaign } from '../../contexts/CampaignProvider';
 
@@ -19,7 +19,7 @@ const CampaignDetail = () => {
   return (
     <>
       <div>
-        <CampaignEditCard />
+        <CampaignSettingsCard />
       </div>
     </>
   );

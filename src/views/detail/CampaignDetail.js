@@ -23,9 +23,9 @@ const CampaignDetail = () => {
   if (loading) return <Loading />;
   return (
     <Wrapper class={wrapperStyle}>
-      {npcs.map((npc) => {
-        return <NpcCard {...npc} key={npc.name} />;
-      })}
+        {npcs.map((npc) => {
+          return <NpcCard {...npc} key={npc.name} />;
+        })}
     </Wrapper>
   );
 };

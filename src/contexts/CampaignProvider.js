@@ -4,11 +4,13 @@ const CampaignCompanionContext = createContext()
 
 export const CampaignProvider = ({ children }) => {
   const [campaign, setCampaign] = useState([])
-  // const [npc, setNpc] = useState([])
+  const [npcs, setNpcs] = useState([])
 
   const value = {
     campaign,
-    setCampaign
+    setCampaign,
+    npcs,
+    setNpcs
   }
 
   return (
@@ -22,4 +24,10 @@ export const useCampaign = () => {
   const { campaign, setCampaign } = useContext(CampaignCompanionContext)
 
   return  { campaign, setCampaign }
+}
+
+export const useNpcs = () => {
+  const { npcs, setNpcs } = useContext(CampaignCompanionContext)
+
+  return { npcs, setNpcs }
 }

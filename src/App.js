@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useAuth } from './contexts/AuthProvider';
 
-import { Campaigns, CampaignSettings, Npcs } from './views/index';
+import { Campaigns, CampaignDetail, CampaignSettings, Npcs } from './views/index';
 import { Header, Footer, Navbar } from './components/layout/index';
 
 import './App.css';
@@ -35,6 +35,7 @@ const App = () => {
             }
           />
           <Route path="/npcs" element={<Npcs />} />
+          <Route path='campaigns/detail/:id' element={<CampaignDetail />} />
           <Route path="campaigns/settings/:id" element={<CampaignSettings />} />
         </Routes>
       </BrowserRouter>

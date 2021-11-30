@@ -4,7 +4,7 @@ import { CampaignSettingsCard } from '../../components/layout/campaigns';
 import { getCampaignById } from '../../services/routes/routes';
 import { useCampaign } from '../../contexts/CampaignProvider';
 
-const CampaignDetail = () => {
+const CampaignSettings = () => {
   const { campaign, setCampaign } = useCampaign();
   const { id } = useParams();
 
@@ -25,7 +25,7 @@ const CampaignDetail = () => {
   );
 };
 
-export default CampaignDetail;
+export default CampaignSettings;
 
 const styles = `
   flex 

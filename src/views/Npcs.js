@@ -13,6 +13,7 @@ const Npcs = () => {
       setNpcs(res);
       setLoading(false);
     };
+
     fetchData();
   }, []);
 

@@ -4,7 +4,6 @@ import { Wrapper } from '../UI';
 
 const Navbar = () => {
   const location = useLocation();
-  console.log(location.pathname);
 
   return (
     <Wrapper class={wrapperStyle}>

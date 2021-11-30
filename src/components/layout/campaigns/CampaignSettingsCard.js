@@ -1,9 +1,11 @@
 import React from 'react';
 import CampaignForm from './CampaignForm';
-import { Card, Wrapper } from '../../UI/';
+import { Card, Wrapper } from '../../UI';
+import { CampaignDeleteCard } from '.';
+import { PlayerAddCard, PlayerDeleteCard, PlayerCard, PlayerPermissionsCard } from '../players/';
 import { useCampaign } from '../../../contexts/CampaignProvider';
 
-const CampaignEditCard = () => {
+const CampaignSettingsCard = () => {
   const { campaign, setCampaign } = useCampaign();
 
   return (
@@ -14,18 +16,23 @@ const CampaignEditCard = () => {
       </Card>
       <Card class={cardStyles}>
         <div>Danger Zone</div>
+        <CampaignDeleteCard />
       </Card>
       <Card class={cardStyles}>
         <div>Players</div>
+        <PlayerCard />
+        <PlayerAddCard />
+        <PlayerDeleteCard />
       </Card>
       <Card class={cardStyles}>
         <div>Player Permissions</div>
+        <PlayerPermissionsCard />
       </Card>
     </Wrapper>
   );
 };
 
-export default CampaignEditCard;
+export default CampaignSettingsCard;
 
 const cardStyles = `
   flex 

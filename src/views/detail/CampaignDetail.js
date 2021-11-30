@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import CampaignEditCard from '../../components/layout/campaigns/CampaignEditCard';
+import { CampaignEditCard } from '../../components/layout/campaigns/';
 import { getCampaignById } from '../../services/routes/routes';
 import { useCampaign } from '../../contexts/CampaignProvider';
 
@@ -16,7 +16,6 @@ const CampaignDetail = () => {
     fetchData();
   }, [id]);
 
-  // const { name, image, description, gameMaster } = campaign;
   return (
     <>
       <div>
@@ -26,10 +25,9 @@ const CampaignDetail = () => {
   );
 };
 
-export default CampaignDetail
+export default CampaignDetail;
 
-const styles =
-`
+const styles = `
   flex 
   flex-col
   items-center 
@@ -38,4 +36,4 @@ const styles =
   rounded 
   max-w-sm 
   m-3
-`
+`;

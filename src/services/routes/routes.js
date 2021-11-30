@@ -19,7 +19,6 @@ const getCampaigns = async() => {
   return checkError(res)
 }
 
-
 const getNpcs = async() => {
   const res = await client
     .from('Npc')
@@ -29,4 +28,18 @@ const getNpcs = async() => {
   return checkError(res)
 }
 
-export { getCampaignById, getCampaigns, getNpcs }
+const getCampaignNpcs = async() => {
+  const res = await client 
+    .from('Npc')
+    .select(
+      `
+      *,
+      campaign (id)
+      `
+    )
+    .order('id')
+    
+    return checkError(res)
+}
+
+export { getCampaignById, getCampaigns, getCampaignNpcs, getNpcs }

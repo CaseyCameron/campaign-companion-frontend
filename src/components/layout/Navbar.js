@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from '@material-ui/core/Button';
 import { Link, useLocation } from 'react-router-dom';
 import { Wrapper } from '../UI';
 
@@ -15,10 +16,25 @@ const Navbar = () => {
           <Link to="/npcs">Npcs</Link>
         </li>
         {location.pathname === '/' && (
-          <div class={rightItemStyle}>Add Campaign</div>
+          <div class={rightItemStyle}>
+            <Button class={button} type="submit" variant="outline">
+              Add Campaign
+            </Button>
+          </div>
         )}
         {location.pathname === '/npcs' && (
-          <div class={rightItemStyle}>Add Npc</div>
+          <div class={rightItemStyle}>
+            <Button class={button} type="submit" variant="outline">
+              Add Npc
+            </Button>
+          </div>
+        )}
+        {location.pathname.includes('detail') && (
+          <div class={rightItemStyle}>
+            <Button class={button} type="submit" variant="outline">
+              Add Npc
+            </Button>
+          </div>
         )}
       </div>
     </Wrapper>
@@ -37,11 +53,18 @@ const leftItemStyle = `
 `;
 
 const rightItemStyle = `
-flex
-absolute 
-right-0
-m-2
-`
+  flex
+  absolute 
+  right-0
+  m-2
+`;
+
+const button = `
+  border-solid
+  border-2
+  rounded-md
+  w-auto
+`;
 const wrapperStyle = `
 
 `;

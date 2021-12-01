@@ -19,11 +19,11 @@ const getCampaigns = async() => {
   return checkError(res)
 }
 
-const getNpcs = async() => {
+const updateCampaign = async(id, cp) => {
   const res = await client
-    .from('Npc')
-    .select('*')
-    .order('id')
+  .from('Campaign')
+  .update({ name: cp.name, image: cp.image, description: cp.description, gameMaster: cp.gameMaster })
+  .match({ id })
 
   return checkError(res)
 }
@@ -42,4 +42,13 @@ const getCampaignNpcs = async (id) => {
   return checkError(res);
 };
 
-export { getCampaignById, getCampaigns, getCampaignNpcs, getNpcs }
+const getNpcs = async() => {
+  const res = await client
+    .from('Npc')
+    .select('*')
+    .order('id')
+
+  return checkError(res)
+}
+
+export { getCampaignById, getCampaigns, updateCampaign, getCampaignNpcs, getNpcs }

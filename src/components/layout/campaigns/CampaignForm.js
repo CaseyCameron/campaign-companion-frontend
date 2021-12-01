@@ -1,10 +1,9 @@
 import React from 'react'
 import { useForm, Controller } from 'react-hook-form'
+import { updateCampaign } from '../../../services/routes/routes';
 import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -33,8 +32,8 @@ const CampaignForm = ({ campaign, handleClose }) => {
   const { handleSubmit, reset, control } = useForm()
 
   const onSubmit = (data) => {
-    console.log(data);
-  }
+    updateCampaign(campaign.id, data);
+  };
 
   return (
     <form class={classes.root} onSubmit={handleSubmit(onSubmit)}>
@@ -110,10 +109,14 @@ const CampaignForm = ({ campaign, handleClose }) => {
         )}
         rules={{ required: 'Game Master required' }}
       />
-      <Button type="submit"></Button>
-      <Button onClick={() => reset()} variant={'outlined'}>
-        Reset
-      </Button>
+      <div className="button div">
+        <Button type="submit" variant={'outlined'}>
+          Submit
+        </Button>
+        <Button onClick={() => reset(campaign)} variant={'outlined'}>
+          Reset
+        </Button>
+      </div>
     </form>
   );
 }

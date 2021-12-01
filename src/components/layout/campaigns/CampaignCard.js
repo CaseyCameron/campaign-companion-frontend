@@ -8,15 +8,13 @@ export default function CampaignCard({ id, name, description, image }) {
     <>
       <Link to={`campaigns/detail/${id}`}>
         <Card class={styles}>
-          <div class={itemStyle}>Name: {name}</div>
-          <div class={itemStyle}>
-            <img class="max-w-xs rounded" src={image} alt={name} />
-          </div>
-          <div class={itemStyle}>Description: {description}</div>
+          <div class={title}>{name}</div>
+          <img class={imageStyle} src={image} alt={name} />
+          <div class={desc}>Description: {description}</div>
           <Link to={`campaigns/settings/${id}`}>
-          <Button class={button} type="submit" variant="outlined">
-            Campaign Settings
-          </Button>
+            <Button class={button} type="submit" variant="outlined">
+              Campaign Settings
+            </Button>
           </Link>
         </Card>
       </Link>
@@ -24,18 +22,32 @@ export default function CampaignCard({ id, name, description, image }) {
   );
 }
 
-const styles =
-`
+const styles = `
   flex 
   flex-col 
   items-center 
   border-2 
   border-solid 
   rounded 
-  max-w-sm 
+  w-80
+  sm:w-96
   m-3
+`;
+
+const desc = `
+  h-12
 `
-const itemStyle = `
+
+const imageStyle = `
+  h-44
+  w-full
+  max-w-xs
+  rounded
+  object-cover
+`;
+
+const title = `
+  truncate
   p-1
 `
 

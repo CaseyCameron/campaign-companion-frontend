@@ -9,7 +9,7 @@ const CampaignDeleteCard = () => {
   return (
     <Wrapper>
       <Card class={style}>
-        <div>Owner: {campaign.gameMaster}</div>
+        <div class={owner}>Owner: {campaign.gameMaster}</div>
         <Button variant="contained" disableElevation>
           Delete Campaign
         </Button>
@@ -21,14 +21,10 @@ const CampaignDeleteCard = () => {
 export default CampaignDeleteCard;
 
 const style = `
-  
+  m-2
+  p-2
 `;
 
-const button = `
-  bg-red-200
-  border-solid
-  border-2
-  border-red-400
-  rounded-md
-  w-auto
-`;
+const owner = `
+  m-4
+`

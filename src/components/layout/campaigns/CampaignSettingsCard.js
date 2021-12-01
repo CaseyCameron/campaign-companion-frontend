@@ -7,7 +7,7 @@ import { useCampaign } from '../../../contexts/CampaignProvider';
 
 const CampaignSettingsCard = () => {
   const { campaign, setCampaign } = useCampaign();
-  
+
   return (
     <Wrapper class={wrapperStyle}>
       <Card class={cardStyles}>
@@ -49,6 +49,7 @@ const cardStyles = `
 const title = `
   bg-gray-100
   rounded
+  w-full
 `
 
 const wrapperStyle = `

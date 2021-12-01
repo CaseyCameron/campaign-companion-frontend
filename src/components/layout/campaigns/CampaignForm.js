@@ -32,14 +32,7 @@ const CampaignForm = ({ campaign }) => {
   const classes = useStyles();
   const [loading, setLoading] = useState(true);
 
-  const { handleSubmit, reset, setValue, control } = useForm({
-    defaultValues: {
-      name: campaign.name,
-      description: campaign.description,
-      image: campaign.image,
-      gameMaster: campaign.gameMaster,
-    },
-  });
+  const { handleSubmit, reset, setValue, control } = useForm();
 
   useEffect(() => {
     if (campaign) setValue('name', campaign.name);

@@ -44,6 +44,7 @@ const CampaignForm = ({ campaign, handleClose }) => {
         placeholder={campaign.name}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <TextField
+            label='name'
             placeholder={campaign.name}
             variant="outlined"
             value={value}
@@ -62,6 +63,7 @@ const CampaignForm = ({ campaign, handleClose }) => {
         placeholder={campaign.description}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <TextField
+            label="description"
             placeholder={campaign.description}
             variant="outlined"
             value={value}
@@ -80,6 +82,7 @@ const CampaignForm = ({ campaign, handleClose }) => {
         placeholder={campaign.image}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <TextField
+            label="image"
             placeholder={campaign.image}
             variant="outlined"
             value={value}
@@ -98,6 +101,7 @@ const CampaignForm = ({ campaign, handleClose }) => {
         placeholder={campaign.gameMaster}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <TextField
+            label="game master"
             placeholder={campaign.gameMaster}
             variant="outlined"
             value={value}

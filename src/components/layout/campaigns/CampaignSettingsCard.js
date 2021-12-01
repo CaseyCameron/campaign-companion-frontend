@@ -11,21 +11,21 @@ const CampaignSettingsCard = () => {
   return (
     <Wrapper class={wrapperStyle}>
       <Card class={cardStyles}>
-        <div>Edit Campaign</div>
+        <div class={title}>Edit Campaign</div>
         <CampaignForm campaign={campaign} />
       </Card>
       <Card class={cardStyles}>
-        <div>Danger Zone</div>
+        <div class={title}>Danger Zone</div>
         <CampaignDeleteCard />
       </Card>
       <Card class={cardStyles}>
-        <div>Players</div>
+        <div class={title}>Players</div>
         <PlayerCard />
         <PlayerAddCard />
         <PlayerDeleteCard />
       </Card>
       <Card class={cardStyles}>
-        <div>Player Permissions</div>
+        <div class={title}>Player Permissions</div>
         <PlayerPermissionsCard />
       </Card>
     </Wrapper>
@@ -43,7 +43,13 @@ const cardStyles = `
   rounded 
   max-w-sm 
   m-3
+  p-2
 `;
+
+const title = `
+  bg-gray-100
+  rounded
+`
 
 const wrapperStyle = `
   flex

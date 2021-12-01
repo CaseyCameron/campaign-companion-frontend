@@ -4,9 +4,9 @@ import { Card, Wrapper } from '../../UI';
 
 const PlayerDeleteCard = () => {
   return (
-    <Wrapper>
+    <Wrapper class={wrapperStyle}>
       <Card>
-        <Button class={button} type="submit" variant="outlined">
+        <Button class={button} variant="contained" disableElevation>
           Delete Player
         </Button>
       </Card>
@@ -22,3 +22,7 @@ border-2
 rounded-md
 w-auto
 `;
+
+const wrapperStyle = `
+  m-2
+`

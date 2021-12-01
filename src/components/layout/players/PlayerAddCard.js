@@ -6,7 +6,7 @@ const PlayerAddCard = () => {
   return (
     <Wrapper>
       <Card>
-        <Button class={button} type="submit" variant="outlined">
+        <Button class={button} variant="contained">
           Add Player
         </Button>
       </Card>

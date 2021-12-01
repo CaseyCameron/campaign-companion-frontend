@@ -10,7 +10,7 @@ const PlayerPermissionsCard = () => {
           <div>Permissions Checkboxes</div>
           <div>Player Dropdown</div>
         </div>
-        <Button class={button} type="submit" variant="outlined">
+        <Button class={button} type="submit" variant={'contained'}>
           Assign Permissions
         </Button>
       </Card>

@@ -10,7 +10,7 @@ const CampaignDeleteCard = () => {
     <Wrapper>
       <Card class={style}>
         <div>Owner: {campaign.gameMaster}</div>
-        <Button class={button} type="submit" variant="outlined">
+        <Button variant="contained" disableElevation>
           Delete Campaign
         </Button>
       </Card>

@@ -114,10 +114,10 @@ const CampaignForm = ({ campaign, handleClose }) => {
         rules={{ required: 'Game Master required' }}
       />
       <div className="button div">
-        <Button type="submit" variant={'outlined'}>
+        <Button type="submit" variant={'contained'}>
           Submit
         </Button>
-        <Button onClick={() => reset(campaign)} variant={'outlined'}>
+        <Button onClick={() => reset(campaign)} variant={'contained'} disableElevation >
           Reset
         </Button>
       </div>

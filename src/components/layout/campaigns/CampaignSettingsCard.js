@@ -7,7 +7,7 @@ import { useCampaign } from '../../../contexts/CampaignProvider';
 
 const CampaignSettingsCard = () => {
   const { campaign, setCampaign } = useCampaign();
-
+  
   return (
     <Wrapper class={wrapperStyle}>
       <Card class={cardStyles}>

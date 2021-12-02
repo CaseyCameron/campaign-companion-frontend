@@ -52,6 +52,7 @@ const CampaignForm = ({ campaign, addForm }) => {
   if (loading) return <Loading />;
   return (
     <form class={classes.root} onSubmit={handleSubmit(onSubmit)}>
+      {addForm && <h1>Add a Campaign</h1>}
       <Controller
         name="name"
         control={control}

@@ -47,13 +47,8 @@ const deleteCampaign = async(id) => {
 const getCampaignNpcs = async (id) => {
   const res = await client
     .from('Npc')
-    .select(
-      `
-      *,
-      campaignId
-      `
-    )
-    .order('id');
+    .select(`* Campaign { * }`)
+    .eq('campaignId', `${id}`)
 
   return checkError(res);
 };

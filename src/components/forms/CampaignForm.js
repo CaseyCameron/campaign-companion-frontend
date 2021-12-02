@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Loading from '../../loading/Loading';
+import Loading from '../loading/Loading';
 import { useForm, Controller } from 'react-hook-form';
-import { updateCampaign } from '../../../services/routes/routes';
+import { addCampaign, updateCampaign } from '../../services/routes/routes';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
@@ -28,22 +28,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CampaignForm = ({ campaign }) => {
+const CampaignForm = ({ campaign, addForm }) => {
   const classes = useStyles();
   const [loading, setLoading] = useState(true);
 
   const { handleSubmit, reset, setValue, control } = useForm();
 
   useEffect(() => {
-    if (campaign) setValue('name', campaign.name);
-    setValue('description', campaign.description);
-    setValue('image', campaign.image);
-    setValue('gameMaster', campaign.gameMaster);
+    if (campaign)
+      Object.entries(campaign).forEach(([key, value]) => {
+        setValue(key, value);
+      });
+
     setLoading(false);
   }, [campaign]);
 
   const onSubmit = (data) => {
-    updateCampaign(campaign.id, data);
+    console.log(addForm);
+    if (!addForm) updateCampaign(campaign.id, data);
+    if (addForm) addCampaign(data);
   };
 
   if (loading) return <Loading />;

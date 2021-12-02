@@ -1,5 +1,5 @@
 import React from 'react';
-import CampaignForm from './CampaignForm';
+import CampaignForm from '../../forms/CampaignForm';
 import { Card, Wrapper } from '../../UI';
 import { CampaignDeleteCard } from '.';
 import { PlayerAddCard, PlayerDeleteCard, PlayerCard, PlayerPermissionsCard } from '../players/';
@@ -12,7 +12,7 @@ const CampaignSettingsCard = () => {
     <Wrapper class={wrapperStyle}>
       <Card class={cardStyles}>
         <div class={title}>Edit Campaign</div>
-        <CampaignForm campaign={campaign} />
+        <CampaignForm campaign={campaign} addForm={false} />
       </Card>
       <Card class={cardStyles}>
         <div class={title}>Danger Zone</div>
@@ -41,7 +41,8 @@ const cardStyles = `
   border-2 
   border-solid 
   rounded 
-  max-w-sm 
+  w-72
+  sm:w-80
   m-3
   p-2
 `;
@@ -55,4 +56,5 @@ const title = `
 const wrapperStyle = `
   flex
   flex-wrap
+  justify-center
 `;

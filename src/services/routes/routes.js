@@ -19,6 +19,15 @@ const getCampaigns = async() => {
   return checkError(res)
 }
 
+const addCampaign = async(cp) => {
+  console.log(cp);
+  const res = await client
+    .from('Campaign')
+    .insert({ name: cp.name, image: cp.image, description: cp.description, gameMaster: cp.gameMaster })
+
+  return checkError(res)
+}
+
 const updateCampaign = async(id, cp) => {
   const res = await client
   .from('Campaign')
@@ -51,4 +60,4 @@ const getNpcs = async() => {
   return checkError(res)
 }
 
-export { getCampaignById, getCampaigns, updateCampaign, getCampaignNpcs, getNpcs }
+export { addCampaign, getCampaignById, getCampaigns, updateCampaign, getCampaignNpcs, getNpcs }

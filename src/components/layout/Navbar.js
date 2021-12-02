@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from '@material-ui/core/Button';
 import { Link, useLocation } from 'react-router-dom';
 import { Wrapper } from '../UI';
+import ModalDialog from '../modals/ModalDialog';
 
 const Navbar = () => {
   const location = useLocation();
+  const [open, setOpen] = useState(false)
+
+  const handleOpen = () => {
+    setOpen(true)
+  }
+
+  const handleClose = () => {
+    setOpen(false)
+  }
 
   return (
     <Wrapper class={wrapperStyle}>
@@ -17,9 +27,10 @@ const Navbar = () => {
         </li>
         {location.pathname === '/' && (
           <div class={rightItemStyle}>
-            <Button class={button} type="submit" variant="outline">
+            <Button class={button} type="submit" variant="outline" onClick={handleOpen}>
               Add Campaign
             </Button>
+            <ModalDialog open={open} handleClose={handleClose} formType={'add'} />
           </div>
         )}
         {location.pathname === '/npcs' && (

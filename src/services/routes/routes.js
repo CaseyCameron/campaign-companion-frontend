@@ -1,5 +1,14 @@
 import { checkError, supabase as client } from '../client'
 
+const addCampaign = async(cp) => {
+  console.log(cp);
+  const res = await client
+    .from('Campaign')
+    .insert({ name: cp.name, image: cp.image, description: cp.description, gameMaster: cp.gameMaster })
+
+  return checkError(res)
+}
+
 const getCampaignById = async(id) => {
   const res = await client
     .from('Campaign')
@@ -19,22 +28,20 @@ const getCampaigns = async() => {
   return checkError(res)
 }
 
-const addCampaign = async(cp) => {
-  console.log(cp);
+const updateCampaign = async(id, cp) => {
   const res = await client
     .from('Campaign')
-    .insert({ name: cp.name, image: cp.image, description: cp.description, gameMaster: cp.gameMaster })
+    .update({ name: cp.name, image: cp.image, description: cp.description, gameMaster: cp.gameMaster })
+    .match({ id })
 
   return checkError(res)
 }
 
-const updateCampaign = async(id, cp) => {
+const deleteCampaign = async(id) => {
   const res = await client
-  .from('Campaign')
-  .update({ name: cp.name, image: cp.image, description: cp.description, gameMaster: cp.gameMaster })
-  .match({ id })
-
-  return checkError(res)
+    .from('Campaign')
+    .delete()
+    .match({ id })
 }
 
 const getCampaignNpcs = async (id) => {
@@ -60,4 +67,4 @@ const getNpcs = async() => {
   return checkError(res)
 }
 
-export { addCampaign, getCampaignById, getCampaigns, updateCampaign, getCampaignNpcs, getNpcs }
+export { addCampaign, deleteCampaign, getCampaignById, getCampaigns, updateCampaign, getCampaignNpcs, getNpcs }

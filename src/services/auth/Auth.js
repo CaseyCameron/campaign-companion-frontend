@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import Button from '@mui/material/Button'
-import ModalDialog from './ModalDialog'
+import ModalDialog from '../../components/modals/ModalDialog'
 
 const Auth = () => {
   const [open, setOpen] = useState(false)

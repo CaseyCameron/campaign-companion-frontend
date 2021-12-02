@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-const Form = ({ handleClose }) => {
+const AuthForm = ({ handleClose }) => {
 	const classes = useStyles();
 	const { handleSubmit, control } = useForm();
 	const { user, signUp, signIn } = useAuth();
@@ -147,4 +147,4 @@ const Form = ({ handleClose }) => {
 	);
 };
 
-export default Form;
+export default AuthForm;

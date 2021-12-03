@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import Button from '@mui/material/Button'
-import ModalDialog from '../../components/modals/ModalDialog'
+import FormModalDialog from '../../components/modals/FormModalDialog'
 
 const Auth = () => {
   const [open, setOpen] = useState(false)
@@ -19,7 +19,7 @@ const Auth = () => {
       <Button variant='contained' color='primary' onClick={handleOpen}>
         Signup
       </Button>
-      <ModalDialog open={open} handleClose={handleClose} />
+      <FormModalDialog open={open} handleClose={handleClose} />
     </div>
   );
 }

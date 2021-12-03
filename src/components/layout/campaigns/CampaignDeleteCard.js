@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router';
+import { Alert, Stack } from '@mui/material';
+import { deleteCampaign } from '../../../services/routes/routes';
+import ConfirmModalDialog from '../../modals/ConfirmModalDialog';
+import { useNavigate } from 'react-router';
+import { useCampaign } from '../../../contexts/CampaignProvider';
+
 import Button from '@material-ui/core/Button';
 import { Card, Wrapper } from '../../UI';
-import { deleteCampaign } from '../../../services/routes/routes';
 import TextField from '@material-ui/core/TextField';
-import { useCampaign } from '../../../contexts/CampaignProvider';
 
 const CampaignDeleteCard = () => {
   let navigate = useNavigate();
+  const [error, setError] = useState(false);
+  const [open, setOpen] = useState(false);
   const [value, setValue] = useState('');
   const { campaign, setCampaign } = useCampaign();
 
@@ -15,13 +20,20 @@ const CampaignDeleteCard = () => {
     setValue(target.value);
   };
 
-  const handleClick = () => {
+  const handleDelete = () => {
+    if (value === campaign.gameMaster) deleteCampaign(campaign.id);
+    navigate('/');
+  };
+
+  const handleOpen = () => {
     if (value === campaign.gameMaster) {
-      console.log('deleting');
-      deleteCampaign(campaign.id);
-      navigate('/');
+      setOpen(true);
+      setError(false);
     } else {
-      console.log('incorrect game master');
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 5000);
     }
   };
 
@@ -39,9 +51,20 @@ const CampaignDeleteCard = () => {
             onChange={handleChange}
           />
         </div>
-        <Button variant="contained" disableElevation onClick={handleClick}>
+        {error && (
+          <Stack sx={{ width: '100%', marginBottom: '10px' }} spacing={2}>
+            <Alert severity="error">Incorrect Game Master</Alert>
+          </Stack>
+        )}
+        <Button variant="contained" onClick={handleOpen}>
           Delete Campaign
         </Button>
+        <ConfirmModalDialog
+          title="Delete Campaign?"
+          open={open}
+          setOpen={setOpen}
+          onConfirm={handleDelete}
+        />
       </Card>
     </Wrapper>
   );

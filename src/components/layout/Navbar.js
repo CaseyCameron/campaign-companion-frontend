@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Button from '@material-ui/core/Button';
 import { Link, useLocation } from 'react-router-dom';
 import { Wrapper } from '../UI';
-import ModalDialog from '../modals/ModalDialog';
+import FormModalDialog from '../modals/FormModalDialog';
 
 const Navbar = () => {
   const location = useLocation();
@@ -30,7 +30,7 @@ const Navbar = () => {
             <Button class={button} type="submit" variant="outline" onClick={handleOpen}>
               Add Campaign
             </Button>
-            <ModalDialog open={open} handleClose={handleClose} formType={'add'} />
+            <FormModalDialog open={open} handleClose={handleClose} formType={'add'} />
           </div>
         )}
         {location.pathname === '/npcs' && (

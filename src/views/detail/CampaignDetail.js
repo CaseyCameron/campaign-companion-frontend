@@ -23,6 +23,7 @@ const CampaignDetail = () => {
   if (loading) return <Loading />;
   return (
     <Wrapper class={wrapperStyle}>
+      {npcs.length === 0 && <h1>This campaign has no npcs yet.</h1>}
         {npcs.map((npc) => {
           return <NpcCard {...npc} key={npc.name} />;
         })}

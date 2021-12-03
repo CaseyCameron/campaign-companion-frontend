@@ -18,6 +18,7 @@ const Campaigns = () => {
     fetchData();
   }, [campaign]);
 
+
   if (loading) return <Loading />;
   return (
     <Wrapper class={wrapperStyle}>

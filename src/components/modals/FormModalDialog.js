@@ -3,7 +3,7 @@ import Dialog from '@material-ui/core/Dialog'
 import AuthForm from '../forms/AuthForm'
 import CampaignForm from "../forms/CampaignForm"
 
-const ModalDialog = ({ open, handleClose, formType }) => {
+const FormModalDialog = ({ open, handleClose, formType }) => {
   return (
     // props received rom App.js
     <Dialog open={open} onClose={handleClose}>
@@ -13,4 +13,4 @@ const ModalDialog = ({ open, handleClose, formType }) => {
   )
 }
 
-export default ModalDialog
+export default FormModalDialog

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Loading from '../loading/Loading';
 import { useForm, Controller } from 'react-hook-form';
-import { addCampaign, updateCampaign } from '../../services/routes/routes';
+import { addNpc } from '../../services/routes/routes';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
@@ -28,30 +28,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CampaignForm = ({ campaign, addForm }) => {
+const NpcForm = ({ npc, addForm }) => {
   const classes = useStyles();
   const [loading, setLoading] = useState(true);
 
   const { handleSubmit, reset, setValue, control } = useForm();
 
   useEffect(() => {
-    if (campaign)
-      Object.entries(campaign).forEach(([key, value]) => {
+    if (npc)
+      Object.entries(npc).forEach(([key, value]) => {
         setValue(key, value);
       });
 
     setLoading(false);
-  }, [campaign]);
+  }, [npc]);
 
   const onSubmit = (formData) => {
-    if (!addForm) updateCampaign(campaign.id, formData);
-    if (addForm) addCampaign(formData);
+    console.log(formData);
+    if (!addForm)
+      if (addForm)
+      console.log('adding npc');
+        //update the npc
+        // addNpc(formData);
   };
 
   if (loading) return <Loading />;
   return (
     <form class={classes.root} onSubmit={handleSubmit(onSubmit)}>
-      {addForm && <h1>Add a Campaign</h1>}
+      {addForm && <h1>Add an Npc</h1>}
       <Controller
         name="name"
         control={control}
@@ -73,6 +77,44 @@ const CampaignForm = ({ campaign, addForm }) => {
         rules={{ required: 'Name required' }}
       />
       <Controller
+        name="race"
+        control={control}
+        defaultValue=""
+        render={({ field: { onChange, value }, fieldState: { error } }) => (
+          <TextField
+            label="race"
+            variant="outlined"
+            value={value}
+            onChange={onChange}
+            onFocus={(event) => {
+              event.target.select();
+            }}
+            error={!!error}
+            helperText={error ? error.message : null}
+            type="text"
+          />
+        )}
+      />
+      <Controller
+        name="alignment"
+        control={control}
+        defaultValue=""
+        render={({ field: { onChange, value }, fieldState: { error } }) => (
+          <TextField
+            label="alignment"
+            variant="outlined"
+            value={value}
+            onChange={onChange}
+            onFocus={(event) => {
+              event.target.select();
+            }}
+            error={!!error}
+            helperText={error ? error.message : null}
+            type="text"
+          />
+        )}
+      />
+      <Controller
         name="description"
         control={control}
         defaultValue=""
@@ -90,15 +132,14 @@ const CampaignForm = ({ campaign, addForm }) => {
             type="text"
           />
         )}
-        rules={{ required: 'Description required' }}
       />
       <Controller
-        name="image"
+        name="affiliation"
         control={control}
         defaultValue=""
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <TextField
-            label="image"
+            label="affiliation"
             variant="outlined"
             value={value}
             onChange={onChange}
@@ -110,15 +151,14 @@ const CampaignForm = ({ campaign, addForm }) => {
             type="text"
           />
         )}
-        rules={{ required: 'Image required' }}
       />
       <Controller
-        name="gameMaster"
+        name="status"
         control={control}
         defaultValue=""
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <TextField
-            label="game master"
+            label="status"
             variant="outlined"
             value={value}
             onChange={onChange}
@@ -130,14 +170,13 @@ const CampaignForm = ({ campaign, addForm }) => {
             type="text"
           />
         )}
-        rules={{ required: 'Game Master required' }}
       />
       <div className="button div">
         <Button type="submit" variant={'contained'}>
           Submit
         </Button>
         <Button
-          onClick={() => reset(campaign)}
+          onClick={() => reset(npc)}
           variant={'contained'}
           disableElevation
         >
@@ -148,4 +187,4 @@ const CampaignForm = ({ campaign, addForm }) => {
   );
 };
 
-export default CampaignForm;
+export default NpcForm;

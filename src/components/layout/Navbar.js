@@ -30,14 +30,15 @@ const Navbar = () => {
             <Button class={button} type="submit" variant="outline" onClick={handleOpen}>
               Add Campaign
             </Button>
-            <FormModalDialog open={open} handleClose={handleClose} formType={'add'} />
+            <FormModalDialog open={open} handleClose={handleClose} formType={'addCampaign'} />
           </div>
         )}
         {location.pathname === '/npcs' && (
           <div class={rightItemStyle}>
-            <Button class={button} type="submit" variant="outline">
+            <Button class={button} type="submit" variant="outline" onClick={handleOpen}>
               Add Npc
             </Button>
+            <FormModalDialog open={open} handleClose={handleClose} formType={'addNpc'} />
           </div>
         )}
         {location.pathname.includes('detail') && (

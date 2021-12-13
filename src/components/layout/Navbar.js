@@ -43,9 +43,10 @@ const Navbar = () => {
         )}
         {location.pathname.includes('detail') && (
           <div class={rightItemStyle}>
-            <Button class={button} type="submit" variant="outline">
+            <Button class={button} type="submit" variant="outline" onClick={handleOpen}>
               Add Npc
             </Button>
+            <FormModalDialog open={open} handleClose={handleClose} formType={'addNpc'} />
           </div>
         )}
       </div>

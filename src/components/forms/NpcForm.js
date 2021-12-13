@@ -47,9 +47,9 @@ const NpcForm = ({ npc, addForm }) => {
     console.log(formData);
     if (!addForm)
       if (addForm)
-      console.log('adding npc');
-        //update the npc
-        // addNpc(formData);
+        //update npc
+        console.log('adding npc');
+    addNpc(formData);
   };
 
   if (loading) return <Loading />;
@@ -75,6 +75,25 @@ const NpcForm = ({ npc, addForm }) => {
           />
         )}
         rules={{ required: 'Name required' }}
+      />
+      <Controller
+        name="Image"
+        control={control}
+        defaultValue=""
+        render={({ field: { onChange, value }, fieldState: { error } }) => (
+          <TextField
+            label="Image"
+            variant="outlined"
+            value={value}
+            onChange={onChange}
+            onFocus={(event) => {
+              event.target.select();
+            }}
+            error={!!error}
+            helperText={error ? error.message : null}
+            type="text"
+          />
+        )}
       />
       <Controller
         name="race"

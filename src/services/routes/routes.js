@@ -42,19 +42,25 @@ const deleteCampaign = async (id) => {
     .from('Campaign')
     .delete()
     .match({ id })
+
+  return checkError(res)
 }
 
-const addNpc = async ({ name, race, alignment, description, affiliation, status }) => {
+const addNpc = async ({ name, image, race, alignment, description, affiliation, status }, campaignId) => {
   const res = await client
     .from('Npc')
     .insert({ 
       name: name,
+      image: image,
       race: race,
       alignment: alignment,
       description: description,
       affiliation: affiliation,
-      status: status
+      status: status,
+      campaignId: campaignId
     })
+
+  return checkError(res)
 }
 
 const getCampaignNpcs = async (id) => {

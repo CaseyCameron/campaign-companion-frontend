@@ -78,7 +78,7 @@ const NpcForm = ({ addForm, handleClose, npc}) => {
         rules={{ required: 'Name required' }}
       />
       <Controller
-        name="Image"
+        name="image"
         control={control}
         defaultValue=""
         render={({ field: { onChange, value }, fieldState: { error } }) => (

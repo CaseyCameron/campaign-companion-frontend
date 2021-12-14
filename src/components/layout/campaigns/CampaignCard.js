@@ -32,6 +32,7 @@ const styles = `
   w-80
   sm:w-96
   m-3
+  shadow-lg
 `;
 
 const desc = `

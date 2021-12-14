@@ -62,10 +62,10 @@ const style = `
 `;
 
 const leftItemStyle = `
-  m-2 
-`;
-
-const rightItemStyle = `
+  m-2
+  `;
+  
+  const rightItemStyle = `
   flex
   absolute 
   right-0
@@ -77,6 +77,7 @@ const button = `
   border-2
   rounded-md
   w-auto
+  shadow-sm
 `;
 const wrapperStyle = `
 

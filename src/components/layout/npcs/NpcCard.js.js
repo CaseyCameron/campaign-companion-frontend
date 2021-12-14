@@ -17,13 +17,13 @@ export default function NpcCard({
       <Card class={styles}>
         <div class={nameStyle}>{name}</div>
         <img class={imageStyle} src={image} alt={name} />
-        <div class={sub}>
-          <div>Race: {race}</div>
-          <div>Alignment: {alignment}</div>
-          <div class={desc}>Description: {description}</div>
-          <div>Affiliation: {affiliation}</div>
-          <div>Status: {status}</div>
-        </div>
+        <ul class={sub}>
+          <li class={raceStyle}>Race: {race}</li>
+          <li>Alignment: {alignment}</li>
+          <li class={desc}>Description: {description}</li>
+          <li>Affiliation: {affiliation}</li>
+          <li>Status: {status}</li>
+        </ul>
       </Card>
     </>
   );
@@ -41,6 +41,7 @@ const styles = `
   h-80
   m-3
   text-xs
+  overflow-y-auto
 `;
 
 const sub = `
@@ -50,7 +51,7 @@ const sub = `
 `;
 
 const desc = `
-  h-12
+  max-h-12
   overflow-auto
 `;
 
@@ -64,4 +65,9 @@ const imageStyle = `
 const nameStyle = `
   truncate
   p-1
+`;
+
+const raceStyle = `
+  list-none
+  indent-0.5
 `;

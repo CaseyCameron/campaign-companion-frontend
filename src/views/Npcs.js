@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Loading from '../components/loading/Loading.js';
 import NpcCard from '../components/layout/npcs/NpcCard.js';
 import { getNpcs } from '../services/routes/routes';
+import Wrapper from '../components/UI/Wrapper';
 
 const Npcs = () => {
   const [loading, setLoading] = useState(true);
@@ -19,14 +20,18 @@ const Npcs = () => {
 
   if (loading) return <Loading />;
   return (
-    <>
-      <div class="m-2 flex">
+    <Wrapper class={wrapperStyle}>
         {npcs.map((npc) => {
           return <NpcCard {...npc} key={npc.id} />;
         })}
-      </div>
-    </>
+    </Wrapper>
   );
 };
 
-export default Npcs
+export default Npcs;
+
+const wrapperStyle = `
+  flex
+  flex-wrap
+  m-2
+`;

@@ -16,7 +16,7 @@ const Campaigns = () => {
       setLoading(false);
     };
     fetchData();
-  }, [campaign]);
+  }, [campaign, setCampaign]);
 
 
   if (loading) return <Loading />;

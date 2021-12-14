@@ -5,7 +5,6 @@ import Card from '../../UI/Card';
 
 export default function CampaignCard({ id, name, description, image }) {
   return (
-    <>
       <Link to={`campaigns/detail/${id}`}>
         <Card class={styles}>
           <div class={title}>{name}</div>
@@ -18,7 +17,6 @@ export default function CampaignCard({ id, name, description, image }) {
           </Link>
         </Card>
       </Link>
-    </>
   );
 }
 

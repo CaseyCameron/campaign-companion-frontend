@@ -41,7 +41,7 @@ const CampaignForm = ({ campaign, addForm }) => {
       });
 
     setLoading(false);
-  }, [campaign]);
+  }, [campaign, setValue]);
 
   const onSubmit = (formData) => {
     if (!addForm) updateCampaign(campaign.id, formData);

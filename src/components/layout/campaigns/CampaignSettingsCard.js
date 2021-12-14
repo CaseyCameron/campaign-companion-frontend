@@ -6,7 +6,7 @@ import { PlayerAddCard, PlayerDeleteCard, PlayerCard, PlayerPermissionsCard } fr
 import { useCampaign } from '../../../contexts/CampaignProvider';
 
 const CampaignSettingsCard = () => {
-  const { campaign, setCampaign } = useCampaign();
+  const { campaign } = useCampaign();
 
   return (
     <Wrapper class={wrapperStyle}>

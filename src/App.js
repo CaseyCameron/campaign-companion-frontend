@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useAuth } from './contexts/AuthProvider';
+// import { useAuth } from './contexts/AuthProvider';
 
 import { Campaigns, CampaignDetail, CampaignSettings, Npcs } from './views/index';
-import { Header, Footer, Navbar } from './components/layout/index';
+import { Header, Navbar } from './components/layout/index';
 
 import './App.css';
 

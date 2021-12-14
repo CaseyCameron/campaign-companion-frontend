@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NpcForm = ({ npc, addForm }) => {
+const NpcForm = ({ addForm, handleClose, npc}) => {
   const classes = useStyles();
   const [loading, setLoading] = useState(true);
 
@@ -41,15 +41,16 @@ const NpcForm = ({ npc, addForm }) => {
       });
 
     setLoading(false);
-  }, [npc]);
+  }, [npc, setValue]);
 
   const onSubmit = (formData) => {
     console.log(formData);
     if (!addForm)
+      //update npc
       if (addForm)
-        //update npc
         console.log('adding npc');
     addNpc(formData);
+    handleClose(true);
   };
 
   if (loading) return <Loading />;
@@ -82,7 +83,7 @@ const NpcForm = ({ npc, addForm }) => {
         defaultValue=""
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <TextField
-            label="Image"
+            label="image"
             variant="outlined"
             value={value}
             onChange={onChange}

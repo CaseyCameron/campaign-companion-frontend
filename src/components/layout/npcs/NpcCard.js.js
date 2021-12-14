@@ -3,7 +3,6 @@ import Card from '../../UI/Card'
 
 
 export default function NpcCard({
-  id,
   name,
   race,
   alignment,
@@ -16,13 +15,13 @@ export default function NpcCard({
     <Card class={styles}>
       <div class={nameStyle}>{name}</div>
       <img class={imageStyle} src={image} alt={name} />
-      <di class={sub}>
+      <div class={sub}>
         <div class={raceStyle}>Race: {race}</div>
         <div>Alignment: {alignment}</div>
         <div class={desc}>Description: {description}</div>
         <div>Affiliation: {affiliation}</div>
         <div>Status: {status}</div>
-      </di>
+      </div>
     </Card>
   );
 }

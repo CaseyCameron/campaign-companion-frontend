@@ -6,7 +6,6 @@ import NpcForm from "../forms/NpcForm"
 
 const FormModalDialog = ({ open, handleClose, formType }) => {
   return (
-    // props received rom App.js
     <Dialog open={open} onClose={handleClose}>
       {formType === 'auth' && <AuthForm handleClose={handleClose} />}
       {formType === 'addCampaign' && <CampaignForm handleClose={handleClose} addForm={true} />}

@@ -16,13 +16,13 @@ const Npcs = () => {
     };
 
     fetchData();
-  }, [npcs, setNpcs]);
+  }, []);
 
   if (loading) return <Loading />;
   return (
     <Wrapper class={wrapperStyle}>
         {npcs.map((npc) => {
-          return <NpcCard {...npc} key={npc.id} update={false}/>;
+          return <NpcCard npc={npc} key={npc.id} update={false}/>;
         })}
     </Wrapper>
   );

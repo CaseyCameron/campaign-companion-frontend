@@ -15,7 +15,7 @@ const Navbar = () => {
   const handleClose = () => {
     setOpen(false)
   }
-
+  console.log(location.pathname);
   return (
     <Wrapper class={wrapperStyle}>
       <div class={style}>
@@ -35,6 +35,7 @@ const Navbar = () => {
         )}
         {location.pathname === '/npcs' && (
           <div class={rightItemStyle}>
+            {console.log('shouldnt be here')}
             <Button class={button} type="submit" variant="outline" onClick={handleOpen}>
               Add Npc
             </Button>
@@ -43,10 +44,13 @@ const Navbar = () => {
         )}
         {location.pathname.includes('detail') && (
           <div class={rightItemStyle}>
+          {console.log('be here')}
             <Button class={button} type="submit" variant="outline" onClick={handleOpen}>
               Add Npc
             </Button>
-            <FormModalDialog open={open} handleClose={handleClose} formType={'addNpc'} />
+            {/* find a way to tell if there is another form modal dialog open
+            if there is, set open to false */}
+            <FormModalDialog open={false} handleClose={handleClose} formType={'addNpc'} />
           </div>
         )}
       </div>

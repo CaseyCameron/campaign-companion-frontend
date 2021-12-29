@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getCampaignNpcs } from '../../services/routes/routes';
 import Loading from '../../components/loading/Loading';
-import NpcCard from '../../components/layout/npcs/NpcCard.js';
+import NpcCard from '../../components/layout/npcs/NpcCard';
 import { useParams } from 'react-router-dom';
 import { useNpcs } from '../../contexts/CampaignProvider';
 import { Wrapper } from '../../components/UI';
@@ -10,6 +10,8 @@ const CampaignDetail = () => {
   const [loading, setLoading] = useState(true);
   const { npcs, setNpcs } = useNpcs();
   const { id } = useParams();
+
+  console.log(npcs);
 
   useEffect(() => {
     const fetchData = async () => {

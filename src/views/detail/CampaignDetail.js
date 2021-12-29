@@ -11,8 +11,6 @@ const CampaignDetail = () => {
   const { npcs, setNpcs } = useNpcs();
   const { id } = useParams();
 
-  console.log(npcs);
-
   useEffect(() => {
     const fetchData = async () => {
       const res = await getCampaignNpcs(id);

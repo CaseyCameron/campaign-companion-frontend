@@ -19,7 +19,7 @@ const NpcDetail = () => {
   }, [id, setNpc]);
 
   if (loading) return <Loading />;
-  return <NpcCard npc={npc} update={true} />;
+  return <NpcCard {...npc} key={npc.id} update={true} />;
 };
 
 export default NpcDetail;

@@ -22,7 +22,7 @@ const Npcs = () => {
   return (
     <Wrapper class={wrapperStyle}>
         {npcs.map((npc) => {
-          return <NpcCard npc={npc} key={npc.id} update={false}/>;
+          return <NpcCard {...npc} key={npc.id} update={false}/>;
         })}
     </Wrapper>
   );

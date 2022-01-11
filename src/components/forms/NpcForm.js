@@ -34,17 +34,19 @@ const NpcForm = ({ addForm, handleClose, npc }) => {
 
   const { handleSubmit, reset, setValue, control } = useForm();
 
+  console.log('addform', addForm);
+
   useEffect(() => {
     if (npc)
       Object.entries(npc).forEach(([key, value]) => {
         setValue(key, value);
       });
-      console.log('hello useEffect')
+    console.log('hello useEffect');
     setLoading(false);
   }, [npc, setValue]);
 
   const onSubmit = (formData) => {
-    console.log('hello');
+    console.log('NpcForm On Submit');
     console.log(formData);
 
     if (!addForm) {

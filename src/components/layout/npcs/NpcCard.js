@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { useNpcEditForm } from '../../../contexts/CampaignProvider';
 import { Button } from '@material-ui/core';
 import Card from '../../UI/Card';
 import ConfirmModalDialog from '../../modals/ConfirmModalDialog';
 import FormModalDialog from '../../modals/FormModalDialog';
 
-const NpcCard = (npc, { update }) => {
+const NpcCard = (npc, update) => {
   const [openEdit, setOpenEdit] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
+  const { npcEditForm, setNpcEditForm } = useNpcEditForm();
   // my navbar needs to know whether openEdit is true
   // if it is true we must ensure open is false on addNpcForm
-  const [openDelete, setOpenDelete] = useState(false);
 
   const handleDelete = () => {
     console.log('deleting');
@@ -17,10 +19,12 @@ const NpcCard = (npc, { update }) => {
 
   const handleOpenEdit = () => {
     setOpenEdit(true);
+    setNpcEditForm(true);
   };
 
   const handleCloseEdit = () => {
     setOpenEdit(false);
+    setNpcEditForm(false);
   };
 
   const handleOpenDelete = () => {

@@ -99,6 +99,12 @@ const updateNpc = async (id, npc) => {
   return checkError(res);
 };
 
+const deleteNpc = async (id) => {
+  const res = await client.from('Npc').delete().match({ id });
+
+  return checkError(res);
+};
+
 export {
   addCampaign,
   deleteCampaign,
@@ -110,4 +116,5 @@ export {
   getNpcById,
   getNpcs,
   updateNpc,
+  deleteNpc,
 };

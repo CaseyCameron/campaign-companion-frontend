@@ -39,7 +39,6 @@ const CampaignForm = ({ campaign, addForm }) => {
       Object.entries(campaign).forEach(([key, value]) => {
         setValue(key, value);
       });
-
     setLoading(false);
   }, [campaign, setValue]);
 

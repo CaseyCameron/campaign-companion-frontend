@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import NpcCard from '../../components/layout/npcs/NpcCard';
+// import NpcForm from '../../components/forms/NpcForm';
 import Loading from '../../components/loading/Loading';
 import { getNpcById } from '../../services/routes/routes';
 
@@ -20,6 +21,9 @@ const NpcDetail = () => {
 
   if (loading) return <Loading />;
   return <NpcCard {...npc} key={npc.id} update={true} />;
+  // return (
+  //   <NpcForm npc={npc} addForm={false} />
+  //);
 };
 
 export default NpcDetail;

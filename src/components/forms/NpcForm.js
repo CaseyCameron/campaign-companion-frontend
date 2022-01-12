@@ -31,34 +31,25 @@ const useStyles = makeStyles((theme) => ({
 const NpcForm = ({ addForm, handleClose, npc }) => {
   const classes = useStyles();
   const [loading, setLoading] = useState(true);
-
   const { handleSubmit, reset, setValue, control } = useForm();
-
-  console.log('addform', addForm);
 
   useEffect(() => {
     if (npc)
       Object.entries(npc).forEach(([key, value]) => {
         setValue(key, value);
       });
-    console.log('hello useEffect');
     setLoading(false);
   }, [npc, setValue]);
 
   const onSubmit = (formData) => {
-    console.log('NpcForm On Submit');
-    console.log(formData);
-
     if (!addForm) {
-      console.log('Updating npc');
       updateNpc(npc.id, formData);
     }
 
     if (addForm) {
-      console.log('adding npc');
       addNpc(formData);
+      handleClose(true);
     }
-    handleClose(true);
   };
 
   if (loading) return <Loading />;

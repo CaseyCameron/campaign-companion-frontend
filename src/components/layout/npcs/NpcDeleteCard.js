@@ -12,7 +12,7 @@ export default function NpcDeleteCard({ id }) {
 
   const handleDelete = () => {
     deleteNpc(id);
-    navigate('/');
+    navigate('/npcs');
   };
 
   const handleOpen = () => {

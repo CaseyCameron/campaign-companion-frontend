@@ -1,40 +1,40 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 // import { useNpcEditForm } from '../../../contexts/CampaignProvider';
-import { Button } from '@material-ui/core';
+// import { Button } from '@material-ui/core';
 import Card from '../../UI/Card';
-import ConfirmModalDialog from '../../modals/ConfirmModalDialog';
-import FormModalDialog from '../../modals/FormModalDialog';
+// import ConfirmModalDialog from '../../modals/ConfirmModalDialog';
+// import FormModalDialog from '../../modals/FormModalDialog';
 
 const NpcCard = (npc, update) => {
-  const [openEdit, setOpenEdit] = useState(false);
-  const [openDelete, setOpenDelete] = useState(false);
+  // const [openEdit, setOpenEdit] = useState(false);
+  // const [openDelete, setOpenDelete] = useState(false);
   // const { npcEditForm, setNpcEditForm } = useNpcEditForm();
   // my navbar needs to know whether openEdit is true
   // if it is true we must ensure open is false on addNpcForm
 
-  const handleDelete = () => {
-    console.log('deleting');
-  };
+  // const handleDelete = () => {
+  //   console.log('deleting');
+  // };
 
-  const handleOpenEdit = () => {
-    setOpenEdit(true);
-    // setNpcEditForm(true);
-  };
+  // const handleOpenEdit = () => {
+  //   setOpenEdit(true);
+  //   // setNpcEditForm(true);
+  // };
 
-  const handleCloseEdit = () => {
-    setOpenEdit(false);
-    // setNpcEditForm(false);
-  };
+  // const handleCloseEdit = () => {
+  //   setOpenEdit(false);
+  //   // setNpcEditForm(false);
+  // };
 
-  const handleOpenDelete = () => {
-    setOpenDelete(true);
-    console.log('hello i am delete');
-  };
+  // const handleOpenDelete = () => {
+  //   setOpenDelete(true);
+  //   console.log('hello i am delete');
+  // };
 
-  const handleCloseDelete = () => {
-    setOpenDelete(false);
-  };
+  // const handleCloseDelete = () => {
+  //   setOpenDelete(false);
+  // };
 
   return (
     <Link to={`/npcs/detail/${npc.id}`}>
@@ -48,7 +48,7 @@ const NpcCard = (npc, update) => {
           <div>Affiliation: {npc.affiliation}</div>
           <div>Status: {npc.status}</div>
         </div>
-        {update && (
+        {/* {update && (
           <div class={buttons}>
             <Button className={button} type="submit" onClick={handleOpenEdit}>
               Edit
@@ -71,7 +71,7 @@ const NpcCard = (npc, update) => {
               handleCLose={handleCloseDelete}
             />
           </div>
-        )}
+        )} */}
       </Card>
     </Link>
   );

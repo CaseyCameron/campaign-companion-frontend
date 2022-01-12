@@ -9,6 +9,9 @@ const NpcSettingsCard = ({ npc }) => {
       <Card class={cardStyles}>
         <NpcForm npc={npc} addForm={false} />
       </Card>
+      <Card>
+        <NpcDeleteCard id={npc.id} />
+      </Card>
     </Wrapper>
   );
 };

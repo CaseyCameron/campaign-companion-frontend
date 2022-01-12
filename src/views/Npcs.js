@@ -21,9 +21,9 @@ const Npcs = () => {
   if (loading) return <Loading />;
   return (
     <Wrapper class={wrapperStyle}>
-        {npcs.map((npc) => {
-          return <NpcCard {...npc} key={npc.id} update={false}/>;
-        })}
+      {npcs.map((npc) => (
+        <NpcCard {...npc} key={npc.id} update={false} />
+      ))}
     </Wrapper>
   );
 };

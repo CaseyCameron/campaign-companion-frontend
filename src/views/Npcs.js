@@ -7,13 +7,11 @@ import Wrapper from '../components/UI/Wrapper';
 
 const Npcs = () => {
   const [loading, setLoading] = useState(true);
-  //const [npcs, setNpcs] = useState([]);
   const { npcs, setNpcs } = useNpcs();
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await getNpcs();
-      //setNpcs(res);
       setNpcs(res);
       setLoading(false);
     };

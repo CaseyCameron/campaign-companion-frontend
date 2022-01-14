@@ -1,42 +1,21 @@
-import React, { useState } from 'react';
-import { deleteCampaign } from '../../../services/routes/routes';
+import React from 'react';
 import ConfirmModalDialog from '../../modals/ConfirmModalDialog';
-import { useNavigate } from 'react-router';
-import { useCampaign } from '../../../contexts/CampaignProvider';
 
 import { Alert, Stack } from '@mui/material';
 import Button from '@material-ui/core/Button';
 import { Card, Wrapper } from '../../UI';
 import TextField from '@material-ui/core/TextField';
 
-const CampaignDeleteCard = () => {
-  let navigate = useNavigate();
-  const [error, setError] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState('');
-  const { campaign, setCampaign } = useCampaign();
-
-  const handleChange = ({ target }) => {
-    setValue(target.value);
-  };
-
-  const handleDelete = () => {
-    if (value === campaign.gameMaster) deleteCampaign(campaign.id);
-    navigate('/');
-  };
-
-  const handleOpen = () => {
-    if (value === campaign.gameMaster) {
-      setOpen(true);
-      setError(false);
-    } else {
-      setError(true);
-      setTimeout(() => {
-        setError(false);
-      }, 5000);
-    }
-  };
-
+const CampaignDeleteCard = ({
+  campaign,
+  error,
+  open,
+  setOpen,
+  value,
+  handleChange,
+  handleOpen,
+  handleDelete,
+}) => {
   return (
     <Wrapper>
       <Card class={style}>
@@ -84,4 +63,3 @@ const owner = `
 const del = `
   m-4
 `;
-

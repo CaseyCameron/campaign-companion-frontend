@@ -12,7 +12,6 @@ const Navbar = () => {
   const { npcEditForm, setNpcEditForm } = useNpcEditForm();
 
   const handleOpen = () => {
-    console.log('navbar handle open', npcEditForm);
     setOpen(true)
   }
 
@@ -46,7 +45,7 @@ const Navbar = () => {
             <FormModalDialog open={open} handleClose={handleClose} formType={'addNpc'} />
           </div>
         )}
-        {(location.pathname.includes('detail') && !npcEditForm) && (
+        {location.pathname.includes('detail') && (
           <div class={rightItemStyle}>
           {console.log('exact path = npcs/details')}
             <Button class={button} type="submit" variant="outline" onClick={handleOpen}>

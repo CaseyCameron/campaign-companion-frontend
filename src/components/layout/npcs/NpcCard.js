@@ -88,7 +88,6 @@ const styles = `
   rounded 
   w-72
   sm:w-80
-  h-92
   m-3
   text-xs
   overflow-y-auto

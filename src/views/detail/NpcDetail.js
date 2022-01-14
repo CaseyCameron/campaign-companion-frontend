@@ -23,14 +23,29 @@ const NpcDetail = () => {
 
   if (loading) return <Loading />;
   return (
-    <Wrapper>
-      <NpcForm npc={npc} key={npc.id} update={true} />
-      <NpcDeleteCard id={npc.id} />
+    <Wrapper class={wrapperStyle}>
+        <img className={imageStyle} src={npc.image} alt={npc.name} />
+        <div>
+          <NpcForm npc={npc} key={npc.id} update={true} />
+          <NpcDeleteCard id={npc.id} />
+        </div>
     </Wrapper>
-  )
-  // return (
-  //   <NpcForm npc={npc} addForm={false} />
-  //);
+  );
 };
 
 export default NpcDetail;
+
+const imageStyle = `
+  max-w-12
+  max-h-24
+  m-5
+  border-2
+  border-solid
+  shadow-lg
+`
+
+const wrapperStyle = `
+  flex
+  justify-center
+`;
+

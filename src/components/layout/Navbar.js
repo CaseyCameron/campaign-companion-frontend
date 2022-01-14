@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom';
-import { useNpcEditForm } from '../../contexts/CampaignProvider';
 
 import Button from '@material-ui/core/Button';
 import FormModalDialog from '../modals/FormModalDialog';
@@ -9,7 +8,6 @@ import { Wrapper } from '../UI';
 const Navbar = () => {
   const location = useLocation();
   const [open, setOpen] = useState(false)
-  const { npcEditForm, setNpcEditForm } = useNpcEditForm();
 
   const handleOpen = () => {
     setOpen(true)
@@ -51,8 +49,6 @@ const Navbar = () => {
             <Button class={button} type="submit" variant="outline" onClick={handleOpen}>
               Add Npc
             </Button>
-            {/* find a way to tell if there is another form modal dialog open
-            if there is, set open to false */}
             <FormModalDialog open={open} handleClose={handleClose} formType={'addNpc'} />
           </div>
         )}

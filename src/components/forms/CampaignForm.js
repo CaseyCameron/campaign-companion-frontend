@@ -5,6 +5,7 @@ import { addCampaign, updateCampaign } from '../../services/routes/routes';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
+import { useCampaign } from '../../contexts/CampaignProvider';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,9 +29,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CampaignForm = ({ campaign, addForm }) => {
+const CampaignForm = ({ campaign, addForm, handleClose }) => {
   const classes = useStyles();
   const [loading, setLoading] = useState(true);
+  const { campaigns, setCampaign } = useCampaign();
 
   const { handleSubmit, reset, setValue, control } = useForm();
 
@@ -42,9 +44,14 @@ const CampaignForm = ({ campaign, addForm }) => {
     setLoading(false);
   }, [campaign, setValue]);
 
-  const onSubmit = (formData) => {
+  const onSubmit = async (formData) => {
     if (!addForm) updateCampaign(campaign.id, formData);
-    if (addForm) addCampaign(formData);
+    if (addForm) {
+      const [addedCampaign] = await addCampaign(formData);
+      setCampaign(prevState => [...prevState, addedCampaign]);
+      handleClose(true);
+    }
+
   };
 
   if (loading) return <Loading />;

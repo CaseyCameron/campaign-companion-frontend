@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-// import NpcCard from '../../components/layout/npcs/NpcCard';
+import { useNavigate, useParams } from 'react-router-dom';
 import NpcForm from '../../components/forms/NpcForm';
 import Loading from '../../components/loading/Loading';
-import { getNpcById } from '../../services/routes/routes';
+import { deleteNpc, getNpcById } from '../../services/routes/routes';
 import { Wrapper } from '../../components/UI';
 import NpcDeleteCard from '../../components/layout/npcs/NpcDeleteCard';
 
 const NpcDetail = () => {
   const [npc, setNpc] = useState();
   const [loading, setLoading] = useState(true);
+  const [open, setOpen] = useState(false);
   const { id } = useParams();
+  let navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,13 +22,27 @@ const NpcDetail = () => {
     fetchData();
   }, [id, setNpc]);
 
+  const handleDelete = () => {
+    deleteNpc(id);
+    navigate('/npcs');
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
   if (loading) return <Loading />;
   return (
     <Wrapper class={wrapperStyle}>
         <img className={imageStyle} src={npc.image} alt={npc.name} />
         <div>
           <NpcForm npc={npc} key={npc.id} />
-          <NpcDeleteCard id={npc.id} />
+          <NpcDeleteCard 
+            open={open}
+            setOpen={setOpen}
+            handleDelete={handleDelete}
+            handleOpen={handleOpen}
+          />
         </div>
     </Wrapper>
   );

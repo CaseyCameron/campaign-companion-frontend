@@ -1,24 +1,10 @@
-import React, { useState } from 'react';
-import { deleteNpc } from '../../../services/routes/routes';
+import React from 'react';
 import ConfirmModalDialog from '../../modals/ConfirmModalDialog';
-import { useNavigate } from 'react-router';
 
 import Button from '@material-ui/core/Button';
 import { Card, Wrapper } from '../../UI';
 
-export default function NpcDeleteCard({ id }) {
-  let navigate = useNavigate();
-  const [open, setOpen] = useState(false);
-
-  const handleDelete = () => {
-    deleteNpc(id);
-    navigate('/npcs');
-  };
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
+export default function NpcDeleteCard({ handleOpen, open, setOpen, handleDelete }) {
   return (
     <Wrapper>
       <Card>

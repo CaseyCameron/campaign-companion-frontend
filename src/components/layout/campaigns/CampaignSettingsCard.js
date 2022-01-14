@@ -3,11 +3,8 @@ import CampaignForm from '../../forms/CampaignForm';
 import { Card, Wrapper } from '../../UI';
 import { CampaignDeleteCard } from '.';
 import { PlayerAddCard, PlayerDeleteCard, PlayerCard, PlayerPermissionsCard } from '../players/';
-import { useCampaign } from '../../../contexts/CampaignProvider';
 
-const CampaignSettingsCard = () => {
-  const { campaign } = useCampaign();
-
+const CampaignSettingsCard = ({ campaign }) => {
   return (
     <Wrapper class={wrapperStyle}>
       <Card class={cardStyles}>

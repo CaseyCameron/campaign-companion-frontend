@@ -18,7 +18,7 @@ const CampaignSettings = () => {
 
   return (
     <>
-      <CampaignSettingsCard />
+      <CampaignSettingsCard campaign={campaign} />
     </>
   );
 };

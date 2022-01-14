@@ -26,7 +26,7 @@ const NpcDetail = () => {
     <Wrapper class={wrapperStyle}>
         <img className={imageStyle} src={npc.image} alt={npc.name} />
         <div>
-          <NpcForm npc={npc} key={npc.id} update={true} />
+          <NpcForm npc={npc} key={npc.id} />
           <NpcDeleteCard id={npc.id} />
         </div>
     </Wrapper>

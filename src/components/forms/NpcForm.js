@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Loading from '../loading/Loading';
 import { useForm, Controller } from 'react-hook-form';
 import { addNpc, updateNpc } from '../../services/routes/routes';
+import { useNpcs } from '../../contexts/CampaignProvider';
+
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
@@ -31,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
 const NpcForm = ({ addForm, handleClose, npc }) => {
   const classes = useStyles();
   const [loading, setLoading] = useState(true);
+  const { npcs, setNpcs } = useNpcs();
   const { handleSubmit, reset, setValue, control } = useForm();
 
   useEffect(() => {
@@ -41,13 +44,15 @@ const NpcForm = ({ addForm, handleClose, npc }) => {
     setLoading(false);
   }, [npc, setValue]);
 
-  const onSubmit = (formData) => {
+  const onSubmit = async (formData) => {
     if (!addForm) {
       updateNpc(npc.id, formData);
     }
 
     if (addForm) {
-      addNpc(formData);
+      const [addedNpc] = await addNpc(formData);
+      console.log(addedNpc);
+      setNpcs(prevState => [...prevState, addedNpc])
       handleClose(true);
     }
   };

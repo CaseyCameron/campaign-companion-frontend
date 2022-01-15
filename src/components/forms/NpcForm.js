@@ -51,7 +51,6 @@ const NpcForm = ({ addForm, handleClose, npc }) => {
 
     if (addForm) {
       const [addedNpc] = await addNpc(formData);
-      console.log(addedNpc);
       setNpcs(prevState => [...prevState, addedNpc])
       handleClose(true);
     }

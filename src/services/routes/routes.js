@@ -1,7 +1,6 @@
 import { checkError, supabase as client } from '../client'
 
 const addCampaign = async (cp) => {
-  console.log(cp);
   const res = await client.from('Campaign').insert({
     name: cp.name,
     image: cp.image,

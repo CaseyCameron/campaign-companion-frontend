@@ -1,4 +1,5 @@
-import Card from './Card'
-import Wrapper from './Wrapper'
+import Card from './Card';
+import Navbar from './Navbar';
+import Wrapper from './Wrapper';
 
-export { Card, Wrapper }
+export { Card, Navbar, Wrapper }

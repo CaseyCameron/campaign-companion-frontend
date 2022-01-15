@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getCampaignNpcs } from '../../services/routes/routes';
 import Loading from '../../components/loading/Loading';
 import NpcCard from '../../components/layout/npcs/NpcCard';
+import SearchBar from '../SearchBar';
 import { useParams } from 'react-router-dom';
 import { useNpcs } from '../../contexts/CampaignProvider';
 import { Wrapper } from '../../components/UI';
@@ -23,6 +24,7 @@ const CampaignDetail = () => {
   if (loading) return <Loading />;
   return (
     <Wrapper class={wrapperStyle}>
+      <SearchBar />
       {npcs.length === 0 && <h1>This campaign has no npcs yet.</h1>}
         {npcs.map((npc) => {
           return <NpcCard {...npc} key={npc.name} />;

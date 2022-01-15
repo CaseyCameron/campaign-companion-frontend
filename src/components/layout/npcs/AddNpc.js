@@ -15,7 +15,7 @@ const AddNpc = ({ open, handleOpen, handleClose }) => {
 
 export default AddNpc;
 
-const button = `View
+const button = `
   border-solid
   border-2
   rounded-md

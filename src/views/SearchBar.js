@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import AddCampaign from '../components/layout/campaigns/AddCampaign';
 import AddNpc from '../components/layout/npcs/AddNpc';
 import { getCampaigns } from '../services/routes/routes';
+import Search from '../components/controls/Search';
 import { useLocation } from 'react-router-dom';
 import { useCampaign } from '../contexts/CampaignProvider';
 import { Wrapper } from '../components/UI';
@@ -12,64 +13,67 @@ const SearchBar = () => {
   const { campaign, setCampaign } = useCampaign();
 
   const handleOpen = () => {
-    setOpen(true)
-  }
+    setOpen(true);
+  };
 
   const handleClose = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
   const handleNpcOpen = async () => {
-    if(campaign) {
-       setOpen(true);
+    if (campaign) {
+      setOpen(true);
     } else {
       const campaigns = await getCampaigns();
       setCampaign(campaigns);
       setOpen(true);
     }
-  }
-  
+  };
+
   return (
-    <Wrapper>
-      <div class={style}>
-        {location.pathname === '/' && (
-          <div class={rightItemStyle}>
-            <AddCampaign open={open} handleClose={handleClose} handleOpen={handleOpen} />
-          </div>
-        )}
-        {location.pathname === '/npcs' && (
-          <div class={rightItemStyle}>
-            <AddNpc open={open} handleClose={handleClose} handleOpen={handleNpcOpen} campaign={campaign} />
-          </div>
-        )}
-        {location.pathname.includes('detail') && (
-          <div class={rightItemStyle}>
-            <AddNpc open={open} handleClose={handleClose} handleOpen={handleNpcOpen} campaign={campaign} />
-          </div>
-        )}
-      </div>
+    <Wrapper class={style}>
+      {location.pathname === '/' && (
+        <div class={searchType}>
+          <Search type={'campaign'} />
+          <AddCampaign
+            open={open}
+            handleClose={handleClose}
+            handleOpen={handleOpen}
+          />
+        </div>
+      )}
+      {location.pathname === '/npcs' && (
+        <AddNpc
+          open={open}
+          handleClose={handleClose}
+          handleOpen={handleNpcOpen}
+          campaign={campaign}
+        />
+      )}
+      {location.pathname.includes('detail') && (
+        <AddNpc
+          open={open}
+          handleClose={handleClose}
+          handleOpen={handleNpcOpen}
+          campaign={campaign}
+        />
+      )}
     </Wrapper>
   );
 };
 
 export default SearchBar;
 
+const searchType = `
+  flex
+  w-full
+  justify-between
+`;
+
 const style = `
   flex
-  list-none
-`;
-
-  const rightItemStyle = `
-  flex
-  absolute 
-  right-0
   m-2
+  w-full
+  h-12
 `;
 
-const button = `
-  border-solid
-  border-2
-  rounded-md
-  w-auto
-  shadow-sm
-`;

@@ -10,21 +10,32 @@ const Campaigns = () => {
 
   if (loading) return <Loading />;
   return (
-    <>
-    <SearchBar />
     <Wrapper class={wrapperStyle}>
+      <div class={search}>
+        <SearchBar />
+      </div>
+    <div class={cpStyle}>
       {campaign.map((campaign) => (
         <CampaignCard {...campaign} key={campaign.id} />
       ))}
+    </div>
     </Wrapper>
-    </>
   );
 };
 
 export default Campaigns;
 
-const wrapperStyle = `
+const cpStyle = `
   flex
   flex-wrap
   m-2
 `;
+
+const search = `
+  flex
+  justify-between
+`
+
+const wrapperStyle= `
+
+`

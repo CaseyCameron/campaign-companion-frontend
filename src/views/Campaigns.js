@@ -1,6 +1,7 @@
 import React from 'react';
 import CampaignCard from '../components/layout/campaigns/CampaignCard';
 import Loading from '../components/loading/Loading';
+import { SearchBar } from '.';
 import { Wrapper } from '../components/UI';
 import { useFetchCampaigns } from '../hooks/hooks';
 
@@ -9,11 +10,14 @@ const Campaigns = () => {
 
   if (loading) return <Loading />;
   return (
+    <>
+    <SearchBar />
     <Wrapper class={wrapperStyle}>
       {campaign.map((campaign) => (
         <CampaignCard {...campaign} key={campaign.id} />
       ))}
     </Wrapper>
+    </>
   );
 };
 

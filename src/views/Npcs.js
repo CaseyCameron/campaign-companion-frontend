@@ -11,20 +11,27 @@ const Npcs = () => {
   if (loading) return <Loading />;
   return (
     <>
-      <SearchBar />
-      <Wrapper class={wrapperStyle}>
+      <div class={searchStyle}>
+        <SearchBar />
+      </div>
+      <div class={npcStyle}>
         {npcs.map((npc) => (
           <NpcCard {...npc} key={npc.id} />
         ))}
-      </Wrapper>
+      </div>
     </>
   );
 };
 
 export default Npcs;
 
-const wrapperStyle = `
+const npcStyle = `
   flex
   flex-wrap
   m-2
 `;
+
+const searchStyle = `
+  flex
+  justify-between
+`

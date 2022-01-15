@@ -34,7 +34,7 @@ const SearchBar = () => {
     <Wrapper class={style}>
       {location.pathname === '/' && (
         <div class={searchType}>
-          <Search type={'campaign'} />
+          <Search type={'Campaigns'} />
           <AddCampaign
             open={open}
             handleClose={handleClose}
@@ -43,20 +43,26 @@ const SearchBar = () => {
         </div>
       )}
       {location.pathname === '/npcs' && (
-        <AddNpc
-          open={open}
-          handleClose={handleClose}
-          handleOpen={handleNpcOpen}
-          campaign={campaign}
-        />
+        <div class={searchType}>
+          <Search type={'Npcs'} />
+          <AddNpc
+            open={open}
+            handleClose={handleClose}
+            handleOpen={handleNpcOpen}
+            campaign={campaign}
+          />
+        </div>
       )}
       {location.pathname.includes('detail') && (
-        <AddNpc
-          open={open}
-          handleClose={handleClose}
-          handleOpen={handleNpcOpen}
-          campaign={campaign}
-        />
+        <div class={searchType}>
+          <Search type={'Npcs'} />
+          <AddNpc
+            open={open}
+            handleClose={handleClose}
+            handleOpen={handleNpcOpen}
+            campaign={campaign}
+          />
+        </div>
       )}
     </Wrapper>
   );

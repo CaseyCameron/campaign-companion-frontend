@@ -2,7 +2,6 @@ import React from 'react';
 import CampaignCard from '../components/layout/campaigns/CampaignCard';
 import Loading from '../components/loading/Loading';
 import { SearchBar } from '.';
-import { Wrapper } from '../components/UI';
 import { useFetchCampaigns } from '../hooks/hooks';
 
 const Campaigns = () => {
@@ -10,8 +9,8 @@ const Campaigns = () => {
 
   if (loading) return <Loading />;
   return (
-    <Wrapper class={wrapperStyle}>
-      <div class={search}>
+    <>
+      <div class={searchStyle}>
         <SearchBar />
       </div>
     <div class={cpStyle}>
@@ -19,7 +18,7 @@ const Campaigns = () => {
         <CampaignCard {...campaign} key={campaign.id} />
       ))}
     </div>
-    </Wrapper>
+    </>
   );
 };
 
@@ -31,11 +30,7 @@ const cpStyle = `
   m-2
 `;
 
-const search = `
+const searchStyle = `
   flex
   justify-between
-`
-
-const wrapperStyle= `
-
 `

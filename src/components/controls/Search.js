@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Search = (type) => {
+const Search = ({ type }) => {
   const classes = useStyles();
   const { handleSubmit, setValue, control } = useForm();
 
@@ -32,12 +32,12 @@ const Search = (type) => {
     <>
       <form class={classes.root} onSubmit={handleSubmit(onSubmit)}>
         <Controller
-          name={`Search ${type}'s`}
+          name={type}
           control={control}
           defaultValue=""
           render={({ field: { onChange, value }, fieldState: { error } }) => (
             <TextField
-              label={`${type}'s`}
+              label={`Search ${type}`}
               variant="outlined"
               value={value || ''}
               onChange={onChange}

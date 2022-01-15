@@ -1,24 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Loading from '../components/loading/Loading.js';
 import NpcCard from '../components/layout/npcs/NpcCard.js';
-import { getNpcs } from '../services/routes/routes';
-import { useNpcs } from '../contexts/CampaignProvider.js';
+import { useFetchNpcs } from '../hooks/hooks.js';
 import { SearchBar } from './index';
 import Wrapper from '../components/UI/Wrapper';
 
 const Npcs = () => {
-  const [loading, setLoading] = useState(true);
-  const { npcs, setNpcs } = useNpcs();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await getNpcs();
-      setNpcs(res);
-      setLoading(false);
-    };
-
-    fetchData();
-  }, []);
+  const [npcs, loading] = useFetchNpcs();
 
   if (loading) return <Loading />;
   return (

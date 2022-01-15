@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { getCampaigns } from '../services/routes/routes';
-import { useCampaign } from '../contexts/CampaignProvider';
+import { getCampaigns, getNpcs } from '../services/routes/routes';
+import { useCampaign, useNpcs } from '../contexts/CampaignProvider';
 
 const useFetchCampaigns = () => {
   const { campaign, setCampaign } = useCampaign();
@@ -18,4 +18,20 @@ const useFetchCampaigns = () => {
   return [campaign, loading];
 };
 
-export { useFetchCampaigns };
+const useFetchNpcs = () => {
+  const { npcs, setNpcs } = useNpcs();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await getNpcs();
+      setNpcs(res);
+      setLoading(false);
+    }
+    fetchData();
+  },[]);
+  
+  return [npcs, loading];
+};
+
+export { useFetchCampaigns, useFetchNpcs };

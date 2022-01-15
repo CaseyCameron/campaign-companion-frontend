@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import { useAuth } from './contexts/AuthProvider';
 
 import { Campaigns, CampaignDetail, CampaignSettings, Npcs, NpcDetail } from './views/index';
-import { Header, Navbar } from './components/layout/index';
+import { Navbar } from './components/UI';
+import { Header } from './components/layout/index';
 
 import './App.css';
 

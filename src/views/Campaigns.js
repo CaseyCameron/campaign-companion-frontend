@@ -1,24 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import CampaignCard from '../components/layout/campaigns/CampaignCard';
-import { getCampaigns } from '../services/routes/routes';
 import Loading from '../components/loading/Loading';
-import { useCampaign } from '../contexts/CampaignProvider';
 import { Wrapper } from '../components/UI';
+import { useFetchCampaigns } from '../hooks/hooks';
 
 const Campaigns = () => {
-  const [loading, setLoading] = useState(true);
-  const { campaign, setCampaign } = useCampaign();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await getCampaigns();
-      setCampaign(res);
-      setLoading(false);
-    };
-    
-    fetchData();
-  }, []);
-
+  const [campaign, loading] = useFetchCampaigns();
 
   if (loading) return <Loading />;
   return (

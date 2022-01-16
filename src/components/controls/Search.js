@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 const Search = ({ type, npcs }) => {
   const [input, setInput] = useState('');
   const [list, setList] = useState([]);
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState('name');
 
   useEffect(() => {
     const regEx = new RegExp(

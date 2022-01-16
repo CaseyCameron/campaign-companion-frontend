@@ -45,7 +45,7 @@ const SearchBar = () => {
       )}
       {location.pathname === '/npcs' && (
         <div class={searchType}>
-          <Search type={'Npcs'} npc={npcs} />
+          <Search type={'Npcs'} npcs={npcs} />
           <AddNpc
             open={open}
             handleClose={handleClose}

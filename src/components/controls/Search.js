@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, makeStyles, TextField } from '@material-ui/core';
+import { Button, makeStyles, Select, TextField } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,14 +22,23 @@ const useStyles = makeStyles((theme) => ({
 const Search = ({ type, npcs }) => {
   const [input, setInput] = useState('');
   const [list, setList] = useState([]);
-  const [key, setKey] = useState('');
+  const [selected, setSelected] = useState('');
 
   useEffect(() => {
-    const regEx = new RegExp(input.split('').map(i => i.toLowerCase()).join(''), 'i');
+    const regEx = new RegExp(
+      input
+        .split('')
+        .map((i) => i.toLowerCase())
+        .join(''),
+      'i'
+    );
     if (!input) setList(npcs);
     if (input) {
-      const filteredNpcs = npcs.filter(i => {
-        const lowerCased = i[key].split('').map(i => i.toLowerCase()).join('');
+      const filteredNpcs = npcs.filter((i) => {
+        const lowerCased = i[selected]
+          .split('')
+          .map((i) => i.toLowerCase())
+          .join('');
         if (lowerCased.match(regEx)) {
           return i;
         } else {
@@ -41,11 +50,15 @@ const Search = ({ type, npcs }) => {
       setList(npcs);
     }
     console.log(list);
-  },[input, key, npcs])
+  }, [input, selected, npcs]);
 
   const handleChange = ({ target }) => {
-    setInput(target.value)
+    setInput(target.value);
     console.log('Searching...');
+  };
+
+  const handleSelectChange = ({ target }) => {
+    setSelected(target.value);
   };
 
   return (
@@ -60,6 +73,21 @@ const Search = ({ type, npcs }) => {
             event.target.select();
           }}
         />
+        <Select
+          labelId="selector"
+          id="select"
+          defaultValue="name"
+          value={selected}
+          label="Selected"
+          onChange={handleSelectChange}
+        >
+          <option value="name">name</option>
+          <option value="race">race</option>
+          <option value="alignment">alignment</option>
+          <option value="description">description</option>
+          <option value="affiliation">affiliation</option>
+          <option value="status">status</option>
+        </Select>
         <Button type="submit" variant={'contained'}>
           Search
         </Button>

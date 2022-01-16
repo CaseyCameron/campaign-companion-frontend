@@ -1,5 +1,4 @@
-import React from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import React, { useEffect, useState } from 'react';
 import { Button, makeStyles, TextField } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -20,35 +19,46 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Search = ({ type }) => {
-  const classes = useStyles();
-  const { handleSubmit, setValue, control } = useForm();
+const Search = ({ type, npcs }) => {
+  const [input, setInput] = useState('');
+  const [list, setList] = useState([]);
+  const [key, setKey] = useState('');
 
-  const onSubmit = () => {
+  useEffect(() => {
+    const regEx = new RegExp(input.split('').map(i => i.toLowerCase()).join(''), 'i');
+    if (!input) setList(npcs);
+    if (input) {
+      const filteredNpcs = npcs.filter(i => {
+        const lowerCased = i[key].split('').map(i => i.toLowerCase()).join('');
+        if (lowerCased.match(regEx)) {
+          return i;
+        } else {
+          return null;
+        }
+      });
+      setList(filteredNpcs);
+    } else {
+      setList(npcs);
+    }
+    console.log(list);
+  },[input, key, npcs])
+
+  const handleChange = ({ target }) => {
+    setInput(target.value)
     console.log('Searching...');
   };
 
   return (
     <>
-      <form class={classes.root} onSubmit={handleSubmit(onSubmit)}>
-        <Controller
-          name={type}
-          control={control}
-          defaultValue=""
-          render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <TextField
-              label={`Search ${type}`}
-              variant="outlined"
-              value={value || ''}
-              onChange={onChange}
-              onFocus={(event) => {
-                event.target.select();
-              }}
-              error={!!error}
-              helperText={error ? error.message : null}
-              type="text"
-            />
-          )}
+      <form>
+        <TextField
+          label={`Search ${type}`}
+          variant="outlined"
+          value={input || ''}
+          onChange={handleChange}
+          onFocus={(event) => {
+            event.target.select();
+          }}
         />
         <Button type="submit" variant={'contained'}>
           Search

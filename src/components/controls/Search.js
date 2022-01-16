@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, makeStyles, Select, TextField } from '@material-ui/core';
+import { InputLabel, makeStyles, Select, TextField } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -9,17 +9,15 @@ const useStyles = makeStyles((theme) => ({
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
       width: '300px',
-    },
-    '& .MuiButtonBase-root': {
-      margin: theme.spacing(2),
-    },
+    }
   },
   link: {
     cursor: 'pointer',
   },
 }));
 
-const Search = ({ type, npcs }) => {
+const Search = ({ type, data }) => {
+  const classes = useStyles();
   const [input, setInput] = useState('');
   const [list, setList] = useState([]);
   const [selected, setSelected] = useState('name');
@@ -32,9 +30,9 @@ const Search = ({ type, npcs }) => {
         .join(''),
       'i'
     );
-    if (!input) setList(npcs);
+    if (!input) setList(data);
     if (input) {
-      const filteredNpcs = npcs.filter((i) => {
+      const filteredData = data.filter((i) => {
         const lowerCased = i[selected]
           .split('')
           .map((i) => i.toLowerCase())
@@ -45,12 +43,12 @@ const Search = ({ type, npcs }) => {
           return null;
         }
       });
-      setList(filteredNpcs);
+      setList(filteredData);
     } else {
-      setList(npcs);
+      setList(data);
     }
     console.log(list);
-  }, [input, selected, npcs]);
+  }, [data, input, list, selected]);
 
   const handleChange = ({ target }) => {
     setInput(target.value);
@@ -63,7 +61,7 @@ const Search = ({ type, npcs }) => {
 
   return (
     <>
-      <form>
+      <form class={classes.root}>
         <TextField
           label={`Search ${type}`}
           variant="outlined"
@@ -73,24 +71,38 @@ const Search = ({ type, npcs }) => {
             event.target.select();
           }}
         />
-        <Select
-          labelId="selector"
+        {type === 'npcs' && (
+          <Select
           id="select"
+            labelId="selector"
+            label="Selected"
+            defaultValue="name"
+            value={selected}
+            variant="outlined"
+            onChange={handleSelectChange}
+            >
+            <option value="name">name</option>
+            <option value="race">race</option>
+            <option value="alignment">alignment</option>
+            <option value="description">description</option>
+            <option value="affiliation">affiliation</option>
+            <option value="status">status</option>
+          </Select>
+        )}
+        {type === 'campaigns' && (
+          <Select
+          id="select"
+          labelId="selector"
+          label="Selected"
           defaultValue="name"
           value={selected}
-          label="Selected"
+          variant="outlined"
           onChange={handleSelectChange}
-        >
-          <option value="name">name</option>
-          <option value="race">race</option>
-          <option value="alignment">alignment</option>
-          <option value="description">description</option>
-          <option value="affiliation">affiliation</option>
-          <option value="status">status</option>
-        </Select>
-        <Button type="submit" variant={'contained'}>
-          Search
-        </Button>
+          >
+            <option value="name">name</option>
+            <option value="description">description</option>
+          </Select>
+        )}
       </form>
     </>
   );

@@ -35,7 +35,7 @@ const SearchBar = () => {
     <Wrapper class={style}>
       {location.pathname === '/' && (
         <div class={searchType}>
-          <Search type={'Campaigns'} npcs={npcs} />
+          <Search type={'campaigns'} data={campaign} />
           <AddCampaign
             open={open}
             handleClose={handleClose}
@@ -45,7 +45,7 @@ const SearchBar = () => {
       )}
       {location.pathname === '/npcs' && (
         <div class={searchType}>
-          <Search type={'Npcs'} npcs={npcs} />
+          <Search type={'npcs'} data={npcs} />
           <AddNpc
             open={open}
             handleClose={handleClose}
@@ -56,7 +56,7 @@ const SearchBar = () => {
       )}
       {location.pathname.includes('detail') && (
         <div class={searchType}>
-          <Search type={'Npcs'} npcs={npcs} />
+          <Search type={'npcs'} data={npcs} />
           <AddNpc
             open={open}
             handleClose={handleClose}

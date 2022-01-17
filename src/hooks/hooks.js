@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { getCampaigns, getNpcs } from '../services/routes/routes';
 import { useCampaigns, useNpcs } from '../contexts/CampaignProvider';
 
@@ -33,5 +33,16 @@ const useFetchNpcs = () => {
   
   return [npcs, loading];
 };
+
+// const searchReducer = (state, action) => {
+//   switch(action.type) {
+//     case 'SEARCH_CAMPAIGNS':
+//       return [...state.campaigns];
+//     case 'SEARCH_NPCS':
+//       return [...state.npcs];
+//     default:
+//       throw new Error('Something went wrong');
+//   }
+// };
 
 export { useFetchCampaigns, useFetchNpcs };

@@ -3,9 +3,11 @@ import CampaignCard from '../components/layout/campaigns/CampaignCard';
 import Loading from '../components/loading/Loading';
 import { SearchBar } from '.';
 import { useFetchCampaigns } from '../hooks/hooks';
+import { useSetSearchItems } from '../contexts/CampaignProvider';
 
 const Campaigns = () => {
-  const [campaign, loading] = useFetchCampaigns();
+  const [campaigns, loading] = useFetchCampaigns();
+  const { searchItems, setSearchItems} = useSetSearchItems();
 
   if (loading) return <Loading />;
   return (
@@ -14,7 +16,7 @@ const Campaigns = () => {
         <SearchBar />
       </div>
     <div class={cpStyle}>
-      {campaign.map((campaign) => (
+      {searchItems.map((campaign) => (
         <CampaignCard {...campaign} key={campaign.id} />
       ))}
     </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles, Select, TextField } from '@material-ui/core';
+import { useSetSearchItems } from '../../contexts/CampaignProvider';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,8 +20,9 @@ const useStyles = makeStyles((theme) => ({
 const Search = ({ type, data }) => {
   const classes = useStyles();
   const [input, setInput] = useState('');
-  const [list, setList] = useState([]);
+  //const [list, setList] = useState([]);
   const [selected, setSelected] = useState('name');
+  const { searchItems, setSearchItems } = useSetSearchItems();
 
   useEffect(() => {
     const regEx = new RegExp(
@@ -30,7 +32,7 @@ const Search = ({ type, data }) => {
         .join(''),
       'i'
     );
-    if (!input) setList(data);
+    if (!input) setSearchItems(data);
     if (input) {
       const filteredData = data.filter((i) => {
         const lowerCased = i[selected]
@@ -43,11 +45,11 @@ const Search = ({ type, data }) => {
           return null;
         }
       });
-      setList(filteredData);
+      setSearchItems(filteredData);
     } else {
-      setList(data);
+      setSearchItems(data);
     }
-    console.log(list);
+    console.log(searchItems);
   }, [data, input, selected]);
 
   const handleChange = ({ target }) => {

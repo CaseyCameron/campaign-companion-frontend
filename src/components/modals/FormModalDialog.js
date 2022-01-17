@@ -7,7 +7,7 @@ import NpcForm from '../forms/NpcForm';
 import { useFetchCampaigns } from '../../hooks/hooks';
 
 const FormModalDialog = ({ open, handleClose, formType, npc }) => {
-  const [campaign, loading] = useFetchCampaigns();
+  const [campaigns, loading] = useFetchCampaigns();
 
   if (loading) return <Loading />;
   return (
@@ -17,14 +17,14 @@ const FormModalDialog = ({ open, handleClose, formType, npc }) => {
         <CampaignForm handleClose={handleClose} addForm={true} />
       )}
       {formType === 'addNpc' && (
-        <NpcForm handleClose={handleClose} addForm={true} campaign={campaign} />
+        <NpcForm handleClose={handleClose} addForm={true} campaign={campaigns} />
       )}
       {formType === 'updateNpc' && (
         <NpcForm
           npc={npc}
           handleClose={handleClose}
           addForm={false}
-          campaign={campaign}
+          campaign={campaigns}
         />
       )}
     </Dialog>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CampaignDeleteCard } from '../../components/layout/campaigns';
 import { deleteCampaign, getCampaignById } from '../../services/routes/routes';
-import { useCampaign } from '../../contexts/CampaignProvider';
+import { useCampaigns } from '../../contexts/CampaignProvider';
 import { Card, Wrapper } from '../../components/UI';
 import {
   PlayerAddCard,
@@ -13,7 +13,7 @@ import {
 import CampaignForm from '../../components/forms/CampaignForm';
 
 const CampaignSettings = () => {
-  const { campaign, setCampaign } = useCampaign();
+  const { campaigns, setCampaigns } = useCampaigns();
   const [error, setError] = useState(false);
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('');
@@ -23,7 +23,7 @@ const CampaignSettings = () => {
   useEffect(() => {
     const fetchData = async () => {
       const res = await getCampaignById(id);
-      setCampaign(res);
+      setCampaigns(res);
     };
     fetchData();
   }, [id]);
@@ -33,12 +33,12 @@ const CampaignSettings = () => {
   };
 
   const handleDelete = () => {
-    if (value === campaign.gameMaster) deleteCampaign(campaign.id);
+    if (value === campaigns.gameMaster) deleteCampaign(campaigns.id);
     navigate('/');
   };
 
   const handleOpen = () => {
-    if (value === campaign.gameMaster) {
+    if (value === campaigns.gameMaster) {
       setOpen(true);
       setError(false);
     } else {
@@ -53,12 +53,12 @@ const CampaignSettings = () => {
     <Wrapper class={wrapperStyle}>
       <Card class={cardStyles}>
         <div class={title}>Edit Campaign</div>
-        <CampaignForm campaign={campaign} addForm={false} />
+        <CampaignForm campaign={campaigns} addForm={false} />
       </Card>
       <Card class={cardStyles}>
         <div class={title}>Danger Zone</div>
         <CampaignDeleteCard 
-          campaign={campaign}
+          campaign={campaigns}
           error={error}
           open={open}
           setOpen={setOpen}

@@ -3,12 +3,12 @@ import React, { createContext, useContext, useState } from 'react'
 const CampaignCompanionContext = createContext()
 
 export const CampaignProvider = ({ children }) => {
-  const [campaign, setCampaign] = useState([]);
+  const [campaigns, setCampaigns] = useState([]);
   const [npcs, setNpcs] = useState([]);
 
   const value = {
-    campaign,
-    setCampaign,
+    campaigns,
+    setCampaigns,
     npcs,
     setNpcs,
   };
@@ -20,10 +20,10 @@ export const CampaignProvider = ({ children }) => {
   );
 };
 
-export const useCampaign = () => {
-  const { campaign, setCampaign } = useContext(CampaignCompanionContext);
+export const useCampaigns = () => {
+  const { campaigns, setCampaigns } = useContext(CampaignCompanionContext);
 
-  return { campaign, setCampaign };
+  return { campaigns, setCampaigns };
 };
 
 export const useNpcs = () => {

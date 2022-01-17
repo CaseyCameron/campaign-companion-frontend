@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { InputLabel, makeStyles, Select, TextField } from '@material-ui/core';
+import { makeStyles, Select, TextField } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,7 +48,7 @@ const Search = ({ type, data }) => {
       setList(data);
     }
     console.log(list);
-  }, [data, input, list, selected]);
+  }, [data, input, selected]);
 
   const handleChange = ({ target }) => {
     setInput(target.value);

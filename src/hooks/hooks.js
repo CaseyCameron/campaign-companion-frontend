@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react';
 import { getCampaigns, getNpcs } from '../services/routes/routes';
-import { useCampaign, useNpcs } from '../contexts/CampaignProvider';
+import { useCampaigns, useNpcs } from '../contexts/CampaignProvider';
 
 const useFetchCampaigns = () => {
-  const { campaign, setCampaign } = useCampaign();
+  const { campaigns, setCampaigns } = useCampaigns();
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
     const fetchData = async () => {
       const res = await getCampaigns();
-      setCampaign(res);
+      setCampaigns(res);
       setLoading(false);
     };
     fetchData();
   },[]);
 
-  return [campaign, loading];
+  return [campaigns, loading];
 };
 
 const useFetchNpcs = () => {

@@ -1,21 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { getCampaigns, getNpcs } from '../services/routes/routes';
-import { useCampaign, useNpcs } from '../contexts/CampaignProvider';
+import { useCampaigns, useNpcs } from '../contexts/CampaignProvider';
 
 const useFetchCampaigns = () => {
-  const { campaign, setCampaign } = useCampaign();
+  const { campaigns, setCampaigns } = useCampaigns();
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
     const fetchData = async () => {
       const res = await getCampaigns();
-      setCampaign(res);
+      setCampaigns(res);
       setLoading(false);
     };
     fetchData();
   },[]);
 
-  return [campaign, loading];
+  return [campaigns, loading];
 };
 
 const useFetchNpcs = () => {
@@ -33,5 +33,16 @@ const useFetchNpcs = () => {
   
   return [npcs, loading];
 };
+
+// const searchReducer = (state, action) => {
+//   switch(action.type) {
+//     case 'SEARCH_CAMPAIGNS':
+//       return [...state.campaigns];
+//     case 'SEARCH_NPCS':
+//       return [...state.npcs];
+//     default:
+//       throw new Error('Something went wrong');
+//   }
+// };
 
 export { useFetchCampaigns, useFetchNpcs };

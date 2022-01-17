@@ -68,7 +68,7 @@ const NpcForm = ({ addForm, handleClose, npc }) => {
           <TextField
             label="name"
             variant="outlined"
-            value={value || ''}
+            value={value || ""}
             onChange={onChange}
             onFocus={(event) => {
               event.target.select();

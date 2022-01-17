@@ -35,7 +35,6 @@ const NpcDetail = () => {
   if (loading) return <Loading />;
   return (
     <>
-    <SearchBar />
     <Wrapper class={wrapperStyle}>
         <img className={imageStyle} src={npc.image} alt={npc.name} />
         <div>

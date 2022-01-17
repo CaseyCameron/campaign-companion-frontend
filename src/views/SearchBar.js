@@ -2,74 +2,85 @@ import React, { useState } from 'react'
 import AddCampaign from '../components/layout/campaigns/AddCampaign';
 import AddNpc from '../components/layout/npcs/AddNpc';
 import { getCampaigns } from '../services/routes/routes';
+import Search from '../components/controls/Search';
 import { useLocation } from 'react-router-dom';
-import { useCampaign } from '../contexts/CampaignProvider';
+import { useCampaigns, useNpcs } from '../contexts/CampaignProvider';
 import { Wrapper } from '../components/UI';
 
 const SearchBar = () => {
   const location = useLocation();
   const [open, setOpen] = useState(false);
-  const { campaign, setCampaign } = useCampaign();
+  const { campaigns, setCampaigns } = useCampaigns();
+  const { npcs, setNpcs } = useNpcs();
 
   const handleOpen = () => {
-    setOpen(true)
-  }
+    setOpen(true);
+  };
 
   const handleClose = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
   const handleNpcOpen = async () => {
-    if(campaign) {
-       setOpen(true);
+    if (campaigns) {
+      setOpen(true);
     } else {
-      const campaigns = await getCampaigns();
-      setCampaign(campaigns);
+      const campaign = await getCampaigns();
+      setCampaigns(campaign);
       setOpen(true);
     }
-  }
-  
+  };
+
   return (
-    <Wrapper>
-      <div class={style}>
-        {location.pathname === '/' && (
-          <div class={rightItemStyle}>
-            <AddCampaign open={open} handleClose={handleClose} handleOpen={handleOpen} />
-          </div>
-        )}
-        {location.pathname === '/npcs' && (
-          <div class={rightItemStyle}>
-            <AddNpc open={open} handleClose={handleClose} handleOpen={handleNpcOpen} campaign={campaign} />
-          </div>
-        )}
-        {location.pathname.includes('detail') && (
-          <div class={rightItemStyle}>
-            <AddNpc open={open} handleClose={handleClose} handleOpen={handleNpcOpen} campaign={campaign} />
-          </div>
-        )}
-      </div>
+    <Wrapper class={style}>
+      {location.pathname === '/' && (
+        <div class={searchType}>
+          <Search type={'campaigns'} data={campaigns} />
+          <AddCampaign
+            open={open}
+            handleClose={handleClose}
+            handleOpen={handleOpen}
+          />
+        </div>
+      )}
+      {location.pathname === '/npcs' && (
+        <div class={searchType}>
+          <Search type={'npcs'} data={npcs} />
+          <AddNpc
+            open={open}
+            handleClose={handleClose}
+            handleOpen={handleNpcOpen}
+            campaign={campaigns}
+          />
+        </div>
+      )}
+      {location.pathname.includes('detail') && (
+        <div class={searchType}>
+          <Search type={'npcs'} data={npcs} />
+          <AddNpc
+            open={open}
+            handleClose={handleClose}
+            handleOpen={handleNpcOpen}
+            campaign={campaigns}
+          />
+        </div>
+      )}
     </Wrapper>
   );
 };
 
 export default SearchBar;
 
+const searchType = `
+  flex
+  w-full
+  justify-between
+`;
+
 const style = `
   flex
-  list-none
-`;
-
-  const rightItemStyle = `
-  flex
-  absolute 
-  right-0
   m-2
+  w-full
+  h-12
 `;
 
-const button = `
-  border-solid
-  border-2
-  rounded-md
-  w-auto
-  shadow-sm
-`;

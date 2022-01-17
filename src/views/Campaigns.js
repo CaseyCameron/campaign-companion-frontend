@@ -2,29 +2,37 @@ import React from 'react';
 import CampaignCard from '../components/layout/campaigns/CampaignCard';
 import Loading from '../components/loading/Loading';
 import { SearchBar } from '.';
-import { Wrapper } from '../components/UI';
 import { useFetchCampaigns } from '../hooks/hooks';
+import { useSetSearchItems } from '../contexts/CampaignProvider';
 
 const Campaigns = () => {
-  const [campaign, loading] = useFetchCampaigns();
+  const [campaigns, loading] = useFetchCampaigns();
+  const { searchItems, setSearchItems} = useSetSearchItems();
 
   if (loading) return <Loading />;
   return (
     <>
-    <SearchBar />
-    <Wrapper class={wrapperStyle}>
-      {campaign.map((campaign) => (
+      <div class={searchStyle}>
+        <SearchBar />
+      </div>
+    <div class={cpStyle}>
+      {searchItems.map((campaign) => (
         <CampaignCard {...campaign} key={campaign.id} />
       ))}
-    </Wrapper>
+    </div>
     </>
   );
 };
 
 export default Campaigns;
 
-const wrapperStyle = `
+const cpStyle = `
   flex
   flex-wrap
   m-2
 `;
+
+const searchStyle = `
+  flex
+  justify-between
+`

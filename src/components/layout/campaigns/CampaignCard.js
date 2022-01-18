@@ -10,11 +10,11 @@ export default function CampaignCard({ id, name, description, image }) {
       <div class={title}>{name}</div>
       <img class={imageStyle} src={image} alt={name} />
       <div class={desc}>Description: {description}</div>
+      </Link>
       <Link to={`campaigns/settings/${id}`}>
         <Button class={button} type="submit" variant="outlined">
           Campaign Settings
         </Button>
-      </Link>
       </Link>
     </Card>
   );

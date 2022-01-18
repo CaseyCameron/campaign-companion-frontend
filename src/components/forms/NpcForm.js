@@ -54,7 +54,7 @@ const NpcForm = ({ addForm, handleClose, npc }) => {
       });
     }
     setLoading(false);
-  }, [npc, setValue]);
+  }, [campaigns, npc, setValue]);
 
   const onSubmit = async (formData) => {
     if (!addForm) {

@@ -5,8 +5,8 @@ import Card from '../../UI/Card';
 
 export default function CampaignCard({ id, name, description, image }) {
   return (
-      <Link to={`campaigns/detail/${id}`}>
-        <Card class={styles}>
+    <Card class={styles}>
+          <Link to={`campaigns/detail/${id}`}>
           <div class={title}>{name}</div>
           <img class={imageStyle} src={image} alt={name} />
           <div class={desc}>Description: {description}</div>
@@ -15,8 +15,8 @@ export default function CampaignCard({ id, name, description, image }) {
               Campaign Settings
             </Button>
           </Link>
-        </Card>
       </Link>
+        </Card>
   );
 }
 

@@ -216,7 +216,7 @@ const NpcForm = ({ addForm, handleClose, npc }) => {
       >
         <MenuItem value={null}>None</MenuItem>
         {campaigns.map((campaign) => (
-          <MenuItem value={campaign.id}>{campaign.name}</MenuItem>
+          <MenuItem key={campaign.id} value={campaign.id}>{campaign.name}</MenuItem>
         ))}
       </TextField>
       <div className="button div">

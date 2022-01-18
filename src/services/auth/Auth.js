@@ -1,27 +1,24 @@
-import React, { useState } from 'react'
+import { client, checkError } from './client.js';
 
-import Button from '@mui/material/Button'
-import FormModalDialog from '../../components/modals/FormModalDialog'
-
-const Auth = () => {
-  const [open, setOpen] = useState(false)
-
-  const handleOpen = () => {
-    setOpen(true)
-  }
-
-  const handleClose = () => {
-    setOpen(false)
-  }
-
-  return (
-    <div className='App'>
-      <Button variant='contained' color='primary' onClick={handleOpen}>
-        Signup
-      </Button>
-      <FormModalDialog open={open} handleClose={handleClose} />
-    </div>
-  );
+const getUser = () => {
+  return client.auth.session();
 }
 
-export default Auth;
+const signupUser = async (email, password) => {
+  const { user, error } = await client.auth.signUp({ email, password });
+  if (error) throw error;
+  return user;
+}
+
+const signInUser = async (email, password) => {
+  const { user, error } = await client.auth.signIn({email, password });
+  if (error) throw error;
+  return user;
+}
+
+const logout = async () => {
+  const res = await client.auth.signOut();
+  return checkError(res);
+}
+
+export { getUser, signupUser, signInUser, logout };

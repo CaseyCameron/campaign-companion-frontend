@@ -5,7 +5,6 @@ import Loading from '../../components/loading/Loading';
 import { deleteNpc, getNpcById } from '../../services/routes/routes';
 import { Wrapper } from '../../components/UI';
 import NpcDeleteCard from '../../components/layout/npcs/NpcDeleteCard';
-import SearchBar from '../SearchBar';
 
 const NpcDetail = () => {
   const [npc, setNpc] = useState();

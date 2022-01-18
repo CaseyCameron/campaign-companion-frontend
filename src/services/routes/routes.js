@@ -82,7 +82,7 @@ const getNpcs = async () => {
   return checkError(res);
 };
 
-const updateNpc = async (id, npc) => {
+const updateNpc = async (id, npc, campaignId) => {
   const res = await client
     .from('Npc')
     .update({
@@ -93,6 +93,7 @@ const updateNpc = async (id, npc) => {
       description: npc.description,
       affiliation: npc.affiliation,
       status: npc.status,
+      campaignId: campaignId,
     })
     .match({ id });
   return checkError(res);

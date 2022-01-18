@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
 const Search = ({ type, data }) => {
   const classes = useStyles();
   const [input, setInput] = useState('');
-  //const [list, setList] = useState([]);
   const [selected, setSelected] = useState('name');
   const { searchItems, setSearchItems } = useSetSearchItems();
 
@@ -49,12 +48,10 @@ const Search = ({ type, data }) => {
     } else {
       setSearchItems(data);
     }
-    console.log(searchItems);
   }, [data, input, selected]);
 
   const handleChange = ({ target }) => {
     setInput(target.value);
-    console.log('Searching...');
   };
 
   const handleSelectChange = ({ target }) => {
@@ -89,6 +86,7 @@ const Search = ({ type, data }) => {
             <option value="description">description</option>
             <option value="affiliation">affiliation</option>
             <option value="status">status</option>
+            <option value="campaignId">campaign</option>
           </Select>
         )}
         {type === 'campaigns' && (

@@ -17,7 +17,7 @@ const FormModalDialog = ({ open, handleClose, formType, npc }) => {
         <CampaignForm handleClose={handleClose} addForm={true} />
       )}
       {formType === 'addNpc' && (
-        <NpcForm handleClose={handleClose} addForm={true} campaign={campaigns} />
+        <NpcForm handleClose={handleClose} addForm={true} campaign={campaigns} npc={null} />
       )}
       {formType === 'updateNpc' && (
         <NpcForm

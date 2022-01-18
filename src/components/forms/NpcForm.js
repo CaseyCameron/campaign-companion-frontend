@@ -32,13 +32,14 @@ const useStyles = makeStyles((theme) => ({
 const NpcForm = ({ addForm, handleClose, npc }) => {
   const classes = useStyles();
   const [loading, setLoading] = useState(true);
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState(null);
   const { npcs, setNpcs } = useNpcs();
   const { campaigns, setCampaigns } = useCampaigns();
   const { handleSubmit, reset, setValue, control } = useForm();
 
   useEffect(() => {
-    if (npc)
+    if (npc) {
+      setSelected(npc.campaignId);
       Object.entries(npc).forEach(([key, value]) => {
         if (key !== 'campaignId' && key !== 'userId') {
           setValue(key, value);
@@ -51,6 +52,7 @@ const NpcForm = ({ addForm, handleClose, npc }) => {
           setValue(key, null);
         }
       });
+    }
     setLoading(false);
   }, [npc, setValue]);
 
@@ -210,13 +212,13 @@ const NpcForm = ({ addForm, handleClose, npc }) => {
         labelId="campaign"
         label="campaign"
         defaultValue=""
-        value={selected || null}
+        value={selected}
         variant="outlined"
         onChange={(e) => setSelected(e.target.value)}
       >
         <MenuItem value={null}>None</MenuItem>
         {campaigns.map((campaign) => (
-          <MenuItem value={campaign.id}>{campaign.name}</MenuItem>
+          <MenuItem key={campaign.id} value={campaign.id}>{campaign.name}</MenuItem>
         ))}
       </TextField>
       <div className="button div">

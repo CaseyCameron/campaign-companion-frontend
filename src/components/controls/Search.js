@@ -21,7 +21,7 @@ const Search = ({ type, data }) => {
   const classes = useStyles();
   const [input, setInput] = useState('');
   const [selected, setSelected] = useState('name');
-  const { searchItems, setSearchItems } = useSetSearchItems();
+  const { setSearchItems } = useSetSearchItems();
 
   useEffect(() => {
     const regEx = new RegExp(
@@ -48,7 +48,7 @@ const Search = ({ type, data }) => {
     } else {
       setSearchItems(data);
     }
-  }, [data, input, selected]);
+  }, [data, input, selected, setSearchItems]);
 
   const handleChange = ({ target }) => {
     setInput(target.value);
@@ -73,13 +73,12 @@ const Search = ({ type, data }) => {
         {type === 'npcs' && (
           <Select
             id="select"
-            labelId="selector"
             label="Selected"
             defaultValue="name"
             value={selected}
             variant="outlined"
             onChange={handleSelectChange}
-            >
+          >
             <MenuItem value="name">name</MenuItem>
             <MenuItem value="race">race</MenuItem>
             <MenuItem value="alignment">alignment</MenuItem>
@@ -91,13 +90,12 @@ const Search = ({ type, data }) => {
         )}
         {type === 'campaigns' && (
           <Select
-          id="select"
-          labelId="selector"
-          label="Selected"
-          defaultValue="name"
-          value={selected}
-          variant="outlined"
-          onChange={handleSelectChange}
+            id="select"
+            label="Selected"
+            defaultValue="name"
+            value={selected}
+            variant="outlined"
+            onChange={handleSelectChange}
           >
             <MenuItem value="name">name</MenuItem>
             <MenuItem value="description">description</MenuItem>

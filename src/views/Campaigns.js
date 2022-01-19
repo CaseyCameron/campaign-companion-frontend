@@ -6,8 +6,8 @@ import { useFetchCampaigns } from '../hooks/hooks';
 import { useSetSearchItems } from '../contexts/CampaignProvider';
 
 const Campaigns = () => {
-  const [campaigns, loading] = useFetchCampaigns();
-  const { searchItems, setSearchItems} = useSetSearchItems();
+  const [, loading] = useFetchCampaigns();
+  const { searchItems, } = useSetSearchItems();
 
   if (loading) return <Loading />;
   return (

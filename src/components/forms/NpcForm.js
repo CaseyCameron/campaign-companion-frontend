@@ -33,8 +33,8 @@ const NpcForm = ({ addForm, handleClose, npc }) => {
   const classes = useStyles();
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState(null);
-  const { npcs, setNpcs } = useNpcs();
-  const { campaigns, setCampaigns } = useCampaigns();
+  const { setNpcs } = useNpcs();
+  const { campaigns, } = useCampaigns();
   const { handleSubmit, reset, setValue, control } = useForm();
 
   useEffect(() => {
@@ -209,7 +209,6 @@ const NpcForm = ({ addForm, handleClose, npc }) => {
       <TextField
         select
         id="campaign"
-        labelId="campaign"
         label="campaign"
         defaultValue=""
         value={selected}

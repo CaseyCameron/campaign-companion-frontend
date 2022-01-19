@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { makeStyles, Select, TextField } from '@material-ui/core';
+import { makeStyles, MenuItem, Select, TextField } from '@material-ui/core';
 import { useSetSearchItems } from '../../contexts/CampaignProvider';
 
 const useStyles = makeStyles((theme) => ({
@@ -72,7 +72,7 @@ const Search = ({ type, data }) => {
         />
         {type === 'npcs' && (
           <Select
-          id="select"
+            id="select"
             labelId="selector"
             label="Selected"
             defaultValue="name"
@@ -80,13 +80,13 @@ const Search = ({ type, data }) => {
             variant="outlined"
             onChange={handleSelectChange}
             >
-            <option value="name">name</option>
-            <option value="race">race</option>
-            <option value="alignment">alignment</option>
-            <option value="description">description</option>
-            <option value="affiliation">affiliation</option>
-            <option value="status">status</option>
-            <option value="campaignId">campaign</option>
+            <MenuItem value="name">name</MenuItem>
+            <MenuItem value="race">race</MenuItem>
+            <MenuItem value="alignment">alignment</MenuItem>
+            <MenuItem value="description">description</MenuItem>
+            <MenuItem value="affiliation">affiliation</MenuItem>
+            <MenuItem value="status">status</MenuItem>
+            <MenuItem value="campaignId">campaign</MenuItem>
           </Select>
         )}
         {type === 'campaigns' && (
@@ -99,8 +99,8 @@ const Search = ({ type, data }) => {
           variant="outlined"
           onChange={handleSelectChange}
           >
-            <option value="name">name</option>
-            <option value="description">description</option>
+            <MenuItem value="name">name</MenuItem>
+            <MenuItem value="description">description</MenuItem>
           </Select>
         )}
       </form>

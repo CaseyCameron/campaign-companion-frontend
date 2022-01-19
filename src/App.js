@@ -33,11 +33,11 @@ const App = () => {
               // </RequireAuth>
             }
           />
-          <Route path="auth" element={<Auth />} />
-          <Route path="npcs" element={<Npcs />} />
-          <Route path="npcs/detail/:id" element={<NpcDetail />}/>
-          <Route path="campaigns/detail/:id" element={<CampaignDetail />} />
-          <Route path="campaigns/settings/:id" element={<CampaignSettings />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/npcs" element={<Npcs />} />
+          <Route path="/npcs/detail/:id" element={<NpcDetail />}/>
+          <Route path="/campaigns/detail/:id" element={<CampaignDetail />} />
+          <Route path="/campaigns/settings/:id" element={<CampaignSettings />} />
         </Routes>
       </BrowserRouter>
     </div>

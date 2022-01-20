@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { makeStyles, MenuItem, Select, TextField } from '@material-ui/core';
-import { useSetSearchItems } from '../../contexts/CampaignProvider';
+import { useSearch } from '../../hooks/hooks';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
       width: '300px',
-    }
+    },
   },
   link: {
     cursor: 'pointer',
@@ -19,44 +19,12 @@ const useStyles = makeStyles((theme) => ({
 
 const Search = ({ type, data }) => {
   const classes = useStyles();
-  const [input, setInput] = useState('');
-  const [selected, setSelected] = useState('name');
-  const { setSearchItems } = useSetSearchItems();
-
-  useEffect(() => {
-    const regEx = new RegExp(
-      input
-        .split('')
-        .map((i) => i.toLowerCase())
-        .join(''),
-      'i'
-    );
-    if (!input) setSearchItems(data);
-    if (input) {
-      const filteredData = data.filter((i) => {
-        const lowerCased = i[selected]
-          .split('')
-          .map((i) => i.toLowerCase())
-          .join('');
-        if (lowerCased.match(regEx)) {
-          return i;
-        } else {
-          return null;
-        }
-      });
-      setSearchItems(filteredData);
-    } else {
-      setSearchItems(data);
-    }
-  }, [data, input, selected, setSearchItems]);
-
-  const handleChange = ({ target }) => {
-    setInput(target.value);
-  };
-
-  const handleSelectChange = ({ target }) => {
-    setSelected(target.value);
-  };
+  const { 
+    input, 
+    selected, 
+    handleChange, 
+    handleSelectChange 
+  } = useSearch({ data });
 
   return (
     <>

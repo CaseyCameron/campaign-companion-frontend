@@ -1,39 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import CampaignCard from '../components/layout/campaigns/CampaignCard';
-import { getCampaigns } from '../services/routes/routes';
 import Loading from '../components/loading/Loading';
-import { useCampaign } from '../contexts/CampaignProvider';
-import { Wrapper } from '../components/UI';
+import { SearchBar } from '.';
+import { useAuth } from '../contexts/AuthProvider';
+import { useFetchCampaigns } from '../hooks/hooks';
+import { useSetSearchItems } from '../contexts/CampaignProvider';
 
 const Campaigns = () => {
-  const [loading, setLoading] = useState(true);
-  const { campaign, setCampaign } = useCampaign();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await getCampaigns();
-      setCampaign(res);
-      setLoading(false);
-    };
-    
-    fetchData();
-  }, []);
-
+  const { user } = useAuth();
+  const [, loading] = useFetchCampaigns();
+  const { searchItems, } = useSetSearchItems();
 
   if (loading) return <Loading />;
   return (
-    <Wrapper class={wrapperStyle}>
-      {campaign.map((campaign) => (
-        <CampaignCard {...campaign} key={campaign.id} />
+    <>
+      <div class={searchStyle}>
+        <SearchBar />
+      </div>
+    <div class={cpStyle}>
+      {searchItems.map((campaign) => (
+        <CampaignCard {...campaign} key={campaign.id} user={user} />
       ))}
-    </Wrapper>
+    </div>
+    </>
   );
 };
 
 export default Campaigns;
 
-const wrapperStyle = `
+const cpStyle = `
   flex
   flex-wrap
   m-2
 `;
+
+const searchStyle = `
+  flex
+  justify-between
+`

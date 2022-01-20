@@ -3,20 +3,22 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom'
 import Card from '../../UI/Card';
 
-export default function CampaignCard({ id, name, description, image }) {
+export default function CampaignCard({ id, name, description, image, user }) {
   return (
+    <Card class={styles}>
       <Link to={`campaigns/detail/${id}`}>
-        <Card class={styles}>
-          <div class={title}>{name}</div>
-          <img class={imageStyle} src={image} alt={name} />
-          <div class={desc}>Description: {description}</div>
-          <Link to={`campaigns/settings/${id}`}>
-            <Button class={button} type="submit" variant="outlined">
-              Campaign Settings
-            </Button>
-          </Link>
-        </Card>
+      <div class={title}>{name}</div>
+      <img class={imageStyle} src={image} alt={name} />
+      <div class={desc}>Description: {description}</div>
       </Link>
+      {user && 
+        <Link to={`campaigns/settings/${id}`}>
+          <Button class={button} type="submit" variant="outlined">
+            Campaign Settings
+          </Button>
+        </Link>
+      }
+    </Card>
   );
 }
 

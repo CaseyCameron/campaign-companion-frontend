@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Loading from '../loading/Loading';
 import { useForm, Controller } from 'react-hook-form';
 import { addNpc, updateNpc } from '../../services/routes/routes';
-import { useNpcs } from '../../contexts/CampaignProvider';
+import { useCampaigns, useNpcs } from '../../contexts/CampaignProvider';
 
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
+import { makeStyles, MenuItem, TextField } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,26 +32,38 @@ const useStyles = makeStyles((theme) => ({
 const NpcForm = ({ addForm, handleClose, npc }) => {
   const classes = useStyles();
   const [loading, setLoading] = useState(true);
-  const { npcs, setNpcs } = useNpcs();
+  const [selected, setSelected] = useState(null);
+  const { setNpcs } = useNpcs();
+  const { campaigns, } = useCampaigns();
   const { handleSubmit, reset, setValue, control } = useForm();
 
   useEffect(() => {
-    if (npc)
+    if (npc) {
+      setSelected(npc.campaignId);
       Object.entries(npc).forEach(([key, value]) => {
-        setValue(key, value);
+        if (key !== 'campaignId' && key !== 'userId') {
+          setValue(key, value);
+        } else if (key === 'campaignId' && value !== null) {
+          const campaignName = campaigns.find(
+            (campaign) => campaign.id === value
+          );
+          setValue(key, campaignName.name);
+        } else if (key === 'campaignId' && value === null) {
+          setValue(key, null);
+        }
       });
+    }
     setLoading(false);
-  }, [npc, setValue]);
+  }, [campaigns, npc, setValue]);
 
   const onSubmit = async (formData) => {
     if (!addForm) {
-      updateNpc(npc.id, formData);
+      updateNpc(npc.id, formData, selected);
     }
 
     if (addForm) {
-      const [addedNpc] = await addNpc(formData);
-      console.log(addedNpc);
-      setNpcs(prevState => [...prevState, addedNpc])
+      const [addedNpc] = await addNpc(formData, selected);
+      setNpcs((prevState) => [...prevState, addedNpc]);
       handleClose(true);
     }
   };
@@ -195,6 +206,20 @@ const NpcForm = ({ addForm, handleClose, npc }) => {
           />
         )}
       />
+      <TextField
+        select
+        id="campaign"
+        label="campaign"
+        defaultValue=""
+        value={selected}
+        variant="outlined"
+        onChange={(e) => setSelected(e.target.value)}
+      >
+        <MenuItem value={null}>None</MenuItem>
+        {campaigns.map((campaign) => (
+          <MenuItem key={campaign.id} value={campaign.id}>{campaign.name}</MenuItem>
+        ))}
+      </TextField>
       <div className="button div">
         <Button type="submit" variant={'contained'}>
           Submit

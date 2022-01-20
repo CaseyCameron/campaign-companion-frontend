@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import NpcForm from '../../components/forms/NpcForm';
-import Loading from '../../components/loading/Loading';
+import { useAuth } from '../../contexts/AuthProvider';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { deleteNpc, getNpcById } from '../../services/routes/routes';
-import { Wrapper } from '../../components/UI';
+import Loading from '../../components/loading/Loading';
+import NpcForm from '../../components/forms/NpcForm';
 import NpcDeleteCard from '../../components/layout/npcs/NpcDeleteCard';
-import SearchBar from '../SearchBar';
+import { Wrapper } from '../../components/UI';
 
 const NpcDetail = () => {
+  const { user } = useAuth();
   const [npc, setNpc] = useState();
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
@@ -35,18 +36,26 @@ const NpcDetail = () => {
   if (loading) return <Loading />;
   return (
     <>
-    <Wrapper class={wrapperStyle}>
-        <img className={imageStyle} src={npc.image} alt={npc.name} />
-        <div>
-          <NpcForm npc={npc} key={npc.id} />
-          <NpcDeleteCard 
-            open={open}
-            setOpen={setOpen}
-            handleDelete={handleDelete}
-            handleOpen={handleOpen}
-          />
-        </div>
-    </Wrapper>
+      {!user && <h1>Please 
+        <Link 
+          to={'/auth'}
+          class={"text-blue-300"}
+          state={{ fromDashboard: true }}
+          > login</Link> to edit Npcs</h1>}
+      {user && (
+        <Wrapper class={wrapperStyle}>
+          <img className={imageStyle} src={npc.image} alt={npc.name} />
+          <div>
+            <NpcForm npc={npc} key={npc.id} />
+            <NpcDeleteCard
+              open={open}
+              setOpen={setOpen}
+              handleDelete={handleDelete}
+              handleOpen={handleOpen}
+            />
+          </div>
+        </Wrapper>
+      )}
     </>
   );
 };

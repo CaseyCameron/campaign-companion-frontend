@@ -5,7 +5,7 @@ import FormModalDialog from '../../modals/FormModalDialog';
 const AddNpc = ({ open, handleOpen, handleClose }) => {
   return (
     <>
-      <Button class={button} type="submit" variant="outline" onClick={handleOpen}>
+      <Button class={button} type="submit" variant="outlined" onClick={handleOpen}>
         Add Npc
       </Button>
       <FormModalDialog open={open} handleClose={handleClose} formType={'addNpc'} />

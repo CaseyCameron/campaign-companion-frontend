@@ -26,7 +26,7 @@ const CampaignSettings = () => {
       setCampaigns(res);
     };
     fetchData();
-  }, [id]);
+  }, [id, setCampaigns]);
 
   const handleChange = ({ target }) => {
     setValue(target.value);

@@ -11,7 +11,7 @@ const SearchBar = () => {
   const location = useLocation();
   const [open, setOpen] = useState(false);
   const { campaigns, setCampaigns } = useCampaigns();
-  const { npcs, setNpcs } = useNpcs();
+  const { npcs, } = useNpcs();
 
   const handleOpen = () => {
     setOpen(true);

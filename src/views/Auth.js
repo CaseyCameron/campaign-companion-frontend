@@ -1,10 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import Button from '@mui/material/Button'
 import FormModalDialog from '../components/modals/FormModalDialog'
+import { useAuth } from '../contexts/AuthProvider'
 
 const Auth = () => {
+  const { user, } = useAuth();
   const [open, setOpen] = useState(false)
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if(user) navigate('/')
+  }, [user]);
 
   const handleOpen = () => {
     setOpen(true)
@@ -16,9 +24,15 @@ const Auth = () => {
 
   return (
     <div className='App'>
-      <Button variant='contained' color='primary' onClick={handleOpen}>
-        Signup
-      </Button>
+      {!user && 
+        <Button variant='contained' color='primary' onClick={handleOpen}>
+          Signup/Sign In
+        </Button>}
+      {user && 
+        <Button variant='contained' color='primary' onClick={handleOpen}>
+          Logout
+        </Button>
+      }
       <FormModalDialog open={open} handleClose={handleClose} formType={'auth'} />
     </div>
   );

@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Loading from '../loading/Loading';
 import { useForm, Controller } from 'react-hook-form';
-import { addNpc, updateNpc } from '../../services/routes/routes';
-import { useCampaigns, useNpcs } from '../../contexts/CampaignProvider';
+import { useNpcForm } from '../../hooks/form-hooks';
 
 import Button from '@material-ui/core/Button';
 import { makeStyles, MenuItem, TextField } from '@material-ui/core';
@@ -31,42 +30,13 @@ const useStyles = makeStyles((theme) => ({
 
 const NpcForm = ({ addForm, handleClose, npc }) => {
   const classes = useStyles();
-  const [loading, setLoading] = useState(true);
-  const [selected, setSelected] = useState(null);
-  const { setNpcs } = useNpcs();
-  const { campaigns, } = useCampaigns();
   const { handleSubmit, reset, setValue, control } = useForm();
-
-  useEffect(() => {
-    if (npc) {
-      setSelected(npc.campaignId);
-      Object.entries(npc).forEach(([key, value]) => {
-        if (key !== 'campaignId' && key !== 'userId') {
-          setValue(key, value);
-        } else if (key === 'campaignId' && value !== null) {
-          const campaignName = campaigns.find(
-            (campaign) => campaign.id === value
-          );
-          setValue(key, campaignName.name);
-        } else if (key === 'campaignId' && value === null) {
-          setValue(key, null);
-        }
-      });
-    }
-    setLoading(false);
-  }, [campaigns, npc, setValue]);
-
-  const onSubmit = async (formData) => {
-    if (!addForm) {
-      updateNpc(npc.id, formData, selected);
-    }
-
-    if (addForm) {
-      const [addedNpc] = await addNpc(formData, selected);
-      setNpcs((prevState) => [...prevState, addedNpc]);
-      handleClose(true);
-    }
-  };
+  const { campaigns, loading, onSubmit, selected, setSelected } = useNpcForm(
+    addForm,
+    npc,
+    handleClose,
+    setValue
+  );
 
   if (loading) return <Loading />;
   return (
@@ -217,7 +187,9 @@ const NpcForm = ({ addForm, handleClose, npc }) => {
       >
         <MenuItem value={null}>None</MenuItem>
         {campaigns.map((campaign) => (
-          <MenuItem key={campaign.id} value={campaign.id}>{campaign.name}</MenuItem>
+          <MenuItem key={campaign.id} value={campaign.id}>
+            {campaign.name}
+          </MenuItem>
         ))}
       </TextField>
       <div className="button div">

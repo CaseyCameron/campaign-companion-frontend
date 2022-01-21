@@ -4,31 +4,9 @@ import { useAuth } from '../../contexts/AuthProvider';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
-import { makeStyles } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: theme.spacing(2),
-    paddingTop: theme.spacing(4),
-
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '300px',
-    },
-    '& .MuiButtonBase-root': {
-      margin: theme.spacing(2),
-    },
-  },
-  link: {
-    cursor: 'pointer',
-  },
-}));
+import { useStyles } from '../../hooks/styles-hooks';
 
 const AuthForm = ({ handleClose }) => {
   const classes = useStyles();

@@ -2,38 +2,16 @@ import React from 'react';
 import Loading from '../loading/Loading';
 import { useForm, Controller } from 'react-hook-form';
 import { useNpcForm } from '../../hooks/form-hooks';
-
 import Button from '@material-ui/core/Button';
-import { makeStyles, MenuItem, TextField } from '@material-ui/core';
+import { MenuItem, TextField } from '@material-ui/core';
+import { useStyles } from '../../hooks/styles-hooks';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: theme.spacing(2),
-    paddingTop: theme.spacing(4),
-
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '300px',
-    },
-    '& .MuiButtonBase-root': {
-      margin: theme.spacing(2),
-    },
-  },
-  link: {
-    cursor: 'pointer',
-  },
-}));
-
-const NpcForm = ({ addForm, handleClose, npc }) => {
+const NpcForm = ({ npc, addForm, handleClose }) => {
   const classes = useStyles();
   const { handleSubmit, reset, setValue, control } = useForm();
   const { campaigns, loading, onSubmit, selected, setSelected } = useNpcForm(
-    addForm,
     npc,
+    addForm,
     handleClose,
     setValue
   );

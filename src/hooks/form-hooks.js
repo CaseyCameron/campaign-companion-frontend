@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { addNpc, updateNpc } from '../services/routes/routes';
 import { useCampaigns, useNpcs } from '../contexts/CampaignProvider';
 
-const useNpcForm = (addForm, npc, handleClose, setValue) => {
+const useNpcForm = (npc, addForm, handleClose, setValue) => {
   const { setNpcs } = useNpcs();
   const { campaigns } = useCampaigns();
   const [loading, setLoading] = useState(true);

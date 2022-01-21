@@ -3,36 +3,14 @@ import Loading from '../loading/Loading';
 import { useForm, Controller } from 'react-hook-form';
 import { addCampaign, updateCampaign } from '../../services/routes/routes';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import { useCampaigns } from '../../contexts/CampaignProvider';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: theme.spacing(2),
-    paddingTop: theme.spacing(4),
-
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '300px',
-    },
-    '& .MuiButtonBase-root': {
-      margin: theme.spacing(2),
-    },
-  },
-  link: {
-    cursor: 'pointer',
-  },
-}));
+import { useStyles } from '../../hooks/styles-hooks';
 
 const CampaignForm = ({ campaign, addForm, handleClose }) => {
   const classes = useStyles();
   const [loading, setLoading] = useState(true);
-  const { campaigns, setCampaigns } = useCampaigns();
+  const { setCampaigns } = useCampaigns();
 
   const { handleSubmit, reset, setValue, control } = useForm();
 

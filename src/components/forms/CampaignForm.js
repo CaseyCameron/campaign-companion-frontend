@@ -1,8 +1,7 @@
 import React from 'react';
 import Loading from '../loading/Loading';
 import { useForm, Controller } from 'react-hook-form';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+import { Button, TextField } from '@material-ui/core/';
 import { useStyles } from '../../hooks/styles-hooks';
 import { useCampaignForm } from '../../hooks/form-hooks';
 

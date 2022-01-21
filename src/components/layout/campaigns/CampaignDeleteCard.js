@@ -2,9 +2,8 @@ import React from 'react';
 import ConfirmModalDialog from '../../modals/ConfirmModalDialog';
 
 import { Alert, Stack } from '@mui/material';
-import Button from '@material-ui/core/Button';
+import { Button, TextField } from '@material-ui/core/';
 import { Card, Wrapper } from '../../UI';
-import TextField from '@material-ui/core/TextField';
 
 const CampaignDeleteCard = ({
   campaign,

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CampaignDeleteCard } from '../../components/layout/campaigns';
+import CampaignForm from '../../components/forms/CampaignForm';
 import { deleteCampaign, getCampaignById } from '../../services/routes/routes';
 import { useCampaigns } from '../../contexts/CampaignProvider';
 import { Card, Wrapper } from '../../components/UI';
@@ -10,7 +11,6 @@ import {
   PlayerCard,
   PlayerPermissionsCard,
 } from '../../components/layout/players';
-import CampaignForm from '../../components/forms/CampaignForm';
 
 const CampaignSettings = () => {
   const { campaigns, setCampaigns } = useCampaigns();

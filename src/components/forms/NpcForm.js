@@ -2,8 +2,7 @@ import React from 'react';
 import Loading from '../loading/Loading';
 import { useForm, Controller } from 'react-hook-form';
 import { useNpcForm } from '../../hooks/form-hooks';
-import Button from '@material-ui/core/Button';
-import { MenuItem, TextField } from '@material-ui/core';
+import { Button, MenuItem, TextField } from '@material-ui/core';
 import { useStyles } from '../../hooks/styles-hooks';
 
 const NpcForm = ({ npc, addForm, handleClose }) => {

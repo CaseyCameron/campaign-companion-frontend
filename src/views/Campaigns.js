@@ -8,8 +8,8 @@ import { useSetSearchItems } from '../contexts/CampaignProvider';
 
 const Campaigns = () => {
   const { user } = useAuth();
-  const [, loading] = useFetchCampaigns();
-  const { searchItems, } = useSetSearchItems();
+  const { loading } = useFetchCampaigns();
+  const { searchItems } = useSetSearchItems();
 
   if (loading) return <Loading />;
   return (

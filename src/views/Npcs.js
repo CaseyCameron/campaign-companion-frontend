@@ -6,8 +6,8 @@ import { SearchBar } from './index';
 import { useSetSearchItems } from '../contexts/CampaignProvider.js';
 
 const Npcs = () => {
-  const [, loading] = useFetchNpcs();
-  const { searchItems, } = useSetSearchItems();
+  const { loading } = useFetchNpcs();
+  const { searchItems } = useSetSearchItems();
 
   if (loading) return <Loading />;
   return (

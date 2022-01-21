@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useAuth } from '../../contexts/AuthProvider';
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
+import { Box, Button, Link, TextField, Typography } from '@material-ui/core/';
 import { useStyles } from '../../hooks/styles-hooks';
 
 const AuthForm = ({ handleClose }) => {

@@ -8,7 +8,7 @@ import { useFetchNpcs } from '../../hooks/hooks';
 
 const CampaignDetail = () => {
   const { id } = useParams();
-  const [, loading] = useFetchNpcs(id);
+  const { loading } = useFetchNpcs(id);
   const { npcs } = useNpcs();
 
 

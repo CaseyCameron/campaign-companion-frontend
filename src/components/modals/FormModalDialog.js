@@ -1,13 +1,13 @@
-import React from "react"
+import React from 'react'
 import Dialog from '@material-ui/core/Dialog'
-import AuthForm from '../forms/AuthForm'
-import CampaignForm from "../forms/CampaignForm"
+import AuthForm from '../forms/AuthForm';
+import CampaignForm from '../forms/CampaignForm';
 import Loading from '../loading/Loading';
 import NpcForm from '../forms/NpcForm';
 import { useFetchCampaigns } from '../../hooks/hooks';
 
 const FormModalDialog = ({ open, handleClose, formType, npc }) => {
-  const [campaigns, loading] = useFetchCampaigns();
+  const { campaigns, loading } = useFetchCampaigns();
 
   if (loading) return <Loading />;
   return (

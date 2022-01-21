@@ -15,7 +15,7 @@ const useFetchCampaigns = () => {
     fetchData();
   },[]);
 
-  return [campaigns, loading];
+  return { campaigns, loading };
 };
 
 const useFetchNpcs = (id) => {
@@ -33,7 +33,7 @@ const useFetchNpcs = (id) => {
     fetchData();
   },[]);
   
-  return [npcs, loading];
+  return { npcs, loading };
 };
 
 const useSearch = ({ data }) => {

@@ -1,6 +1,30 @@
 import { useEffect, useState } from 'react';
-import { addNpc, updateNpc } from '../services/routes/routes';
+import { addCampaign, updateCampaign, addNpc, updateNpc } from '../services/routes/routes';
 import { useCampaigns, useNpcs } from '../contexts/CampaignProvider';
+
+const useCampaignForm = (campaign, addForm, handleClose, setValue) => {
+  const [loading, setLoading] = useState(true);
+  const { setCampaigns } = useCampaigns();
+
+  useEffect(() => {
+    if (campaign)
+      Object.entries(campaign).forEach(([key, value]) => {
+        setValue(key, value);
+      });
+    setLoading(false);
+  }, [campaign, setValue]);
+
+  const onSubmit = async (formData) => {
+    if (!addForm) updateCampaign(campaign.id, formData);
+    if (addForm) {
+      const [addedCampaign] = await addCampaign(formData);
+      setCampaigns(prevState => [...prevState, addedCampaign]);
+      handleClose(true);
+    }
+  };
+
+  return { campaign, loading, onSubmit}
+};
 
 const useNpcForm = (npc, addForm, handleClose, setValue) => {
   const { setNpcs } = useNpcs();
@@ -41,4 +65,4 @@ const useNpcForm = (npc, addForm, handleClose, setValue) => {
   return { campaigns, loading, onSubmit, selected, setSelected };
 };
 
-export { useNpcForm };
+export { useCampaignForm, useNpcForm };

@@ -21,3 +21,18 @@ export const useStyles = makeStyles((theme) => ({
     // cursor: 'pointer',
   },
 }));
+
+export const useSearchStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '300px',
+    },
+  },
+  link: {
+    cursor: 'pointer',
+  },
+}));

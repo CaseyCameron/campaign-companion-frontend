@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useAuth } from '../../contexts/AuthProvider';
-import { Link, useNavigate, useParams } from 'react-router-dom';
 import { deleteNpc, getNpcById } from '../../services/routes/routes';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Loading from '../../components/loading/Loading';
 import NpcForm from '../../components/forms/NpcForm';
 import NpcDeleteCard from '../../components/layout/npcs/NpcDeleteCard';
+import { useAuth } from '../../contexts/AuthProvider';
 import { Wrapper } from '../../components/UI';
 
 const NpcDetail = () => {

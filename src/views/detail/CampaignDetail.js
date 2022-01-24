@@ -3,8 +3,8 @@ import Loading from '../../components/loading/Loading';
 import NpcCard from '../../components/layout/npcs/NpcCard';
 import SearchBar from '../SearchBar';
 import { useFetchNpcs } from '../../hooks/hooks';
-import { useParams } from 'react-router-dom';
 import { useNpcs } from '../../contexts/CampaignProvider';
+import { useParams } from 'react-router-dom';
 
 const CampaignDetail = () => {
   const { id } = useParams();

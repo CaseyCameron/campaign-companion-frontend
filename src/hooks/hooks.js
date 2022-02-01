@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getCampaignNpcs, getCampaigns, getNpcs } from '../services/routes/routes';
+import { getCampaignNpcs, getCampaigns, getNpcs } from '../services/routes/index';
 import { useCampaigns, useNpcs, useSetSearchItems } from '../contexts/CampaignProvider';
 
 const useFetchCampaigns = () => {

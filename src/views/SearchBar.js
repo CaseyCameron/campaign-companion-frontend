@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import AddCampaign from '../components/layout/campaigns/AddCampaign';
 import AddNpc from '../components/layout/npcs/AddNpc';
-import { getCampaigns } from '../services/routes/routes';
+import { getCampaigns } from '../services/routes/index';
 import Search from '../components/controls/Search';
 import { useLocation } from 'react-router-dom';
 import { useCampaigns, useNpcs } from '../contexts/CampaignProvider';

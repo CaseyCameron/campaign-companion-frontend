@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { deleteNpc, getNpcById } from '../../services/routes/routes';
+import { deleteNpc, getNpcById } from '../../services/routes/index';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Loading from '../../components/loading/Loading';
 import NpcForm from '../../components/forms/NpcForm';

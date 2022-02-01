@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { addCampaign, updateCampaign, addNpc, updateNpc } from '../services/routes/routes';
+import { addCampaign, updateCampaign, addNpc, updateNpc } from '../services/routes/index';
 import { useCampaigns, useNpcs } from '../contexts/CampaignProvider';
 
 const useCampaignForm = (campaign, addForm, handleClose, setValue) => {

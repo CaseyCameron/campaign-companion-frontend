@@ -1,13 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Auth, Campaigns, CampaignDetail, CampaignSettings, Npcs, NpcDetail } from './views/index';
-import Navbar from './components/controls/Navbar';
 import { Header } from './components/layout/index';
+import Navbar from './components/controls/Navbar';
 import './App.css';
 
 const App = () => {
   return (
-    <div className="App">
       <BrowserRouter>
         <Header />
         <Navbar />
@@ -23,7 +22,6 @@ const App = () => {
           />
         </Routes>
       </BrowserRouter>
-    </div>
   );
 };
 

@@ -7,9 +7,9 @@ export default function CampaignCard({ id, name, description, image, user }) {
   return (
     <Card class={styles}>
       <Link to={`campaigns/detail/${id}`}>
-      <div class={title}>{name}</div>
-      <img class={imageStyle} src={image} alt={name} />
-      <div class={desc}>Description: {description}</div>
+          <div className={title}>{name}</div>
+          <img className={imageStyle} src={image} alt={name} />
+          <div className={desc}>Description: {description}</div>
       </Link>
       {user && 
         <Link to={`campaigns/settings/${id}`}>
@@ -25,7 +25,8 @@ export default function CampaignCard({ id, name, description, image, user }) {
 const styles = `
   flex 
   flex-col 
-  items-center 
+  items-center
+  text-center
   border-2 
   border-solid 
   rounded 
@@ -37,17 +38,18 @@ const styles = `
 
 const desc = `
   h-12
+  overflow-auto
 `
 
 const imageStyle = `
   h-44
-  w-full
-  max-w-xs
   rounded
-  object-cover
+  p-2
+  mx-auto
 `;
 
 const title = `
+  text-center
   truncate
   p-1
 `

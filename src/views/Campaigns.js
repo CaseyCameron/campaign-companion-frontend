@@ -32,6 +32,7 @@ const cpStyle = `
   flex
   flex-wrap
   m-2
+  justify-center
 `;
 
 const searchStyle = `

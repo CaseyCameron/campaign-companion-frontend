@@ -1,6 +1,8 @@
 import React from 'react'
 import Button from '@material-ui/core/Button';
 import FormModalDialog from '../../modals/FormModalDialog';
+import formTypes from '../../../data/form-types';
+
 
 const AddCampaign = ({ open, handleOpen, handleClose }) => {
   return (
@@ -16,7 +18,7 @@ const AddCampaign = ({ open, handleOpen, handleClose }) => {
       <FormModalDialog
         open={open}
         handleClose={handleClose}
-        formType={'addCampaign'}
+        formType={formTypes.addCampaign}
       />
     </>
   );

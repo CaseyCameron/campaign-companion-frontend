@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from '@mui/material/Button'
 import FormModalDialog from '../components/modals/FormModalDialog'
+import formTypes from '../data/form-types'
 import { useAuth } from '../contexts/AuthProvider'
 
 const Auth = () => {
@@ -32,7 +33,7 @@ const Auth = () => {
           Logout
         </Button>
       }
-      <FormModalDialog open={open} handleClose={handleClose} formType={'auth'} />
+      <FormModalDialog open={open} handleClose={handleClose} formType={formTypes.auth} />
     </div>
   );
 }

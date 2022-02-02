@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from '@material-ui/core/Button';
 import FormModalDialog from '../../modals/FormModalDialog';
+import formTypes from '../../../data/form-types';
 
 const AddNpc = ({ open, handleOpen, handleClose }) => {
   return (
@@ -8,7 +9,7 @@ const AddNpc = ({ open, handleOpen, handleClose }) => {
       <Button class={button} type="submit" variant="outlined" onClick={handleOpen}>
         Add Npc
       </Button>
-      <FormModalDialog open={open} handleClose={handleClose} formType={'addNpc'} />
+      <FormModalDialog open={open} handleClose={handleClose} formType={formTypes.addNpc} />
     </>
   )
 }

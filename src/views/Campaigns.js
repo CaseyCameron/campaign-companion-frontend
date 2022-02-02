@@ -14,10 +14,10 @@ const Campaigns = () => {
   if (loading) return <Loading />;
   return (
     <>
-      <div class={searchStyle}>
+      <div className={searchStyle}>
         <SearchBar />
       </div>
-    <div class={cpStyle}>
+    <div className={cpStyle}>
       {searchItems.map((campaign) => (
         <CampaignCard {...campaign} key={campaign.id} user={user} />
       ))}

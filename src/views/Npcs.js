@@ -12,10 +12,10 @@ const Npcs = () => {
   if (loading) return <Loading />;
   return (
     <>
-      <div class={searchStyle}>
+      <div className={searchStyle}>
         <SearchBar />
       </div>
-      <div class={npcStyle}>
+      <div className={npcStyle}>
         {searchItems.map((npc) => (
           <NpcCard {...npc} key={npc.id} />
         ))}
@@ -30,6 +30,7 @@ const npcStyle = `
   flex
   flex-wrap
   m-2
+  justify-center
 `;
 
 const searchStyle = `

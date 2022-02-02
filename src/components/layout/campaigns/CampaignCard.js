@@ -9,7 +9,7 @@ export default function CampaignCard({ id, name, description, image, user }) {
       <Link to={`campaigns/detail/${id}`}>
           <div className={title}>{name}</div>
           <img className={imageStyle} src={image} alt={name} />
-          <div className={desc}>Description: {description}</div>
+          <div className={desc}>{description}</div>
       </Link>
       {user && 
         <Link to={`campaigns/settings/${id}`}>
@@ -43,8 +43,8 @@ const desc = `
 
 const imageStyle = `
   h-44
-  rounded
   p-2
+  rounded
   mx-auto
 `;
 
@@ -52,6 +52,9 @@ const title = `
   text-center
   truncate
   p-1
+  border-solid
+  border-b-2
+  border-slate-300
 `
 
 const button = `

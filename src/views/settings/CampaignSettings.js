@@ -52,11 +52,11 @@ const CampaignSettings = () => {
   return (
     <Wrapper class={wrapperStyle}>
       <Card class={cardStyles}>
-        <div class={title}>Edit Campaign</div>
+        <div className={title}>Edit Campaign</div>
         <CampaignForm campaign={campaigns} addForm={false} />
       </Card>
       <Card class={cardStyles}>
-        <div class={title}>Danger Zone</div>
+        <div className={title}>Danger Zone</div>
         <CampaignDeleteCard 
           campaign={campaigns}
           error={error}
@@ -69,13 +69,13 @@ const CampaignSettings = () => {
         />
       </Card>
       <Card class={cardStyles}>
-        <div class={title}>Players</div>
+        <div className={title}>Players</div>
         <PlayerCard />
         <PlayerAddCard />
         <PlayerDeleteCard />
       </Card>
       <Card class={cardStyles}>
-        <div class={title}>Player Permissions</div>
+        <div className={title}>Player Permissions</div>
         <PlayerPermissionsCard />
       </Card>
     </Wrapper>

@@ -14,10 +14,10 @@ const CampaignDetail = () => {
   if (loading) return <Loading />;
   return (
     <>
-      <div class={searchStyle}>
+      <div className={searchStyle}>
         <SearchBar />
       </div>
-      <div class={npcStyle}>
+      <div className={npcStyle}>
         {npcs.length === 0 && <h1>This campaign has no npcs yet.</h1>}
         {npcs.map((npc) => {
           return <NpcCard {...npc} key={npc.name} />;

@@ -17,8 +17,8 @@ const CampaignDeleteCard = ({
   return (
     <Wrapper>
       <Card class={style}>
-        <div class={owner}>Owner: {campaign.gameMaster}</div>
-        <div class={del}>
+        <div className={owner}>Owner: <span className="font-serif">{campaign.gameMaster}</span></div>
+        <div className={del}>
           To delete this campaign, type in the gameMaster email and hit 'DELETE
           CAMPAIGN'
           <TextField
@@ -33,7 +33,7 @@ const CampaignDeleteCard = ({
             <Alert severity="error">Incorrect Game Master</Alert>
           </Stack>
         )}
-        <Button variant="contained" onClick={handleOpen}>
+        <Button className={button} variant="contained" onClick={handleOpen}>
           Delete Campaign
         </Button>
         <ConfirmModalDialog
@@ -50,6 +50,9 @@ const CampaignDeleteCard = ({
 export default CampaignDeleteCard;
 
 const style = `
+  flex
+  flex-col
+  justify-center
   m-2
   p-2
 `;
@@ -60,4 +63,9 @@ const owner = `
 
 const del = `
   m-4
+  text-sm
 `;
+
+const button = `
+
+`

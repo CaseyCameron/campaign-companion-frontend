@@ -47,13 +47,13 @@ const NpcDetail = () => {
           <img className={imageStyle} src={npc.image} alt={npc.name} />
           <div>
             <NpcForm npc={npc} key={npc.id} />
+          </div>
             <NpcDeleteCard
               open={open}
               setOpen={setOpen}
               handleDelete={handleDelete}
               handleOpen={handleOpen}
             />
-          </div>
         </Wrapper>
       )}
     </>
@@ -75,4 +75,3 @@ const wrapperStyle = `
   flex
   justify-center
 `;
-

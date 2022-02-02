@@ -34,7 +34,7 @@ const SearchBar = () => {
   return (
     <Wrapper class={style}>
       {location.pathname === '/' && (
-        <div class={searchType}>
+        <div className={searchType}>
           <Search type={'campaigns'} data={campaigns} />
           <AddCampaign
             open={open}

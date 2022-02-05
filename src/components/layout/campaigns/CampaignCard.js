@@ -6,7 +6,7 @@ import Card from '../../UI/Card';
 export default function CampaignCard({ id, name, description, image, user }) {
   return (
     <Card class={styles}>
-      <Link to={`campaigns/detail/${id}`}>
+      <Link className="-4 min-w-full" to={`campaigns/detail/${id}`}>
           <div className={title}>{name}</div>
           <img className={imageStyle} src={image} alt={name} />
           <div className={desc}>{description}</div>

@@ -5,7 +5,7 @@ import Card from '../../UI/Card';
 const NpcCard = (npc) => {
   return (
     <Card class={styles}>
-      <Link to={`/npcs/detail/${npc.id}`}>
+      <Link className="p-4 min-w-auto" to={`/npcs/detail/${npc.id}`}>
         <div className={nameStyle}>{npc.name}</div>
         <img className={imageStyle} src={npc.image} alt={npc.name} />
         <div className={sub}>

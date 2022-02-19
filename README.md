@@ -1,7 +1,7 @@
 # Campaign Companion: Currently a WIP
-![image](https://user-images.githubusercontent.com/29679939/154782114-b2b5cbf1-81f2-417c-b3ed-93a254f2e728.png)
+![image](https://user-images.githubusercontent.com/29679939/154784342-8cf99029-bf2a-49c3-800c-ceb44c99f5bb.png)
 
-![image](https://user-images.githubusercontent.com/29679939/154782134-8066f0ce-db7b-4907-ab69-5c67f60c9e90.png)
+![image](https://user-images.githubusercontent.com/29679939/154784310-7d0c6162-3bd9-4dfb-8fa0-9e3bd2fbd1ea.png)
 
 ## In Progress
 1. Styling

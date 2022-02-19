@@ -7,7 +7,7 @@ export default function NpcDeleteCard({ handleOpen, open, setOpen, handleDelete 
   return (
     <Wrapper>
       <Card>
-        <Button variant="contained" onClick={handleOpen}>
+        <Button className={'mb-20'} variant="contained" onClick={handleOpen}>
           Delete Npc
         </Button>
         <ConfirmModalDialog

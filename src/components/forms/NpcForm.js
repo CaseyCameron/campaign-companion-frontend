@@ -18,7 +18,9 @@ const NpcForm = ({ npc, addForm, handleClose }) => {
   if (loading) return <Loading />;
   return (
     <form class={classes.root} onSubmit={handleSubmit(onSubmit)}>
-      {addForm ? <h1>Add an Npc</h1> : <h1>Update an Npc</h1>}
+      <div className={title}>
+        {addForm ? <h1>Add an Npc</h1> : <h1>Update an Npc</h1>}
+      </div>
       <Controller
         name="name"
         control={control}
@@ -197,3 +199,10 @@ const NpcForm = ({ npc, addForm, handleClose }) => {
 };
 
 export default NpcForm;
+
+const title = `
+  bg-gray-100
+  rounded
+  w-full
+  px-2
+`;

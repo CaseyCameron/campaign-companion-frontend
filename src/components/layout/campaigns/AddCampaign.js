@@ -27,6 +27,7 @@ const AddCampaign = ({ open, handleOpen, handleClose }) => {
 export default AddCampaign;
 
 const button = `
+  bg-white
   border-solid
   border-2
   rounded-md

@@ -17,6 +17,7 @@ const AddNpc = ({ open, handleOpen, handleClose }) => {
 export default AddNpc;
 
 const button = `
+  bg-white
   p-2
   border-solid
   border-2

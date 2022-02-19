@@ -68,5 +68,6 @@ const del = `
 `;
 
 const button = `
-
+  px-0
+  mx-0
 `

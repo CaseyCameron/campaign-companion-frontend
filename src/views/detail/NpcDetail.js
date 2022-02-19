@@ -53,7 +53,7 @@ const NpcDetail = () => {
       {user && (
         <Wrapper class={wrapperStyle}>
           <img className={imageStyle} src={npc.image} alt={npc.name} />
-          <div>
+          <div className={npcForm}>
             <NpcForm npc={npc} key={npc.id} />
             <div className={deleteCard}>
               <NpcDeleteCard
@@ -91,3 +91,13 @@ const wrapperStyle = `
   flex
   justify-center
 `;
+
+const npcForm = `
+  bg-white
+  rounded
+  w-80
+  sm:w-96
+  m-3
+  shadow-lg
+  pb-10
+`

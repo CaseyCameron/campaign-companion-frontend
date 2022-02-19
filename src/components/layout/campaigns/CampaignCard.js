@@ -63,4 +63,5 @@ const button = `
   w-auto
   m-2
   px-3
+  mb-6
 `;

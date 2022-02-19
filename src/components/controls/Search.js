@@ -15,6 +15,7 @@ const Search = ({ type, data }) => {
         label={`Search ${type}`}
         variant="outlined"
         value={input || ''}
+        size="small"
         onChange={handleChange}
         onFocus={(event) => {
           event.target.select();
@@ -27,6 +28,7 @@ const Search = ({ type, data }) => {
           defaultValue="name"
           value={selected}
           variant="outlined"
+          style={{ height: "41px", background: "white", }}
           onChange={handleSelectChange}
         >
           <MenuItem value="name">name</MenuItem>
@@ -45,6 +47,7 @@ const Search = ({ type, data }) => {
           defaultValue="name"
           value={selected}
           variant="outlined"
+          style={{ height: "41px", background: "white", }}
           onChange={handleSelectChange}
         >
           <MenuItem value="name">name</MenuItem>

@@ -63,4 +63,5 @@ const button = `
   rounded-md
   w-auto
   m-2
+  px-3
 `;

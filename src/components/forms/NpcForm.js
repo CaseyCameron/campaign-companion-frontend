@@ -35,6 +35,7 @@ const NpcForm = ({ npc, addForm, handleClose }) => {
             error={!!error}
             helperText={error ? error.message : null}
             type="text"
+            size="small"
           />
         )}
         rules={{ required: 'Name required' }}
@@ -55,6 +56,7 @@ const NpcForm = ({ npc, addForm, handleClose }) => {
             error={!!error}
             helperText={error ? error.message : null}
             type="text"
+            size="small"
           />
         )}
       />
@@ -74,6 +76,7 @@ const NpcForm = ({ npc, addForm, handleClose }) => {
             error={!!error}
             helperText={error ? error.message : null}
             type="text"
+            size="small"
           />
         )}
       />
@@ -93,28 +96,11 @@ const NpcForm = ({ npc, addForm, handleClose }) => {
             error={!!error}
             helperText={error ? error.message : null}
             type="text"
+            size="small"
           />
         )}
       />
-      <Controller
-        name="description"
-        control={control}
-        defaultValue=""
-        render={({ field: { onChange, value }, fieldState: { error } }) => (
-          <TextField
-            label="description"
-            variant="outlined"
-            value={value || ''}
-            onChange={onChange}
-            onFocus={(event) => {
-              event.target.select();
-            }}
-            error={!!error}
-            helperText={error ? error.message : null}
-            type="text"
-          />
-        )}
-      />
+
       <Controller
         name="affiliation"
         control={control}
@@ -131,6 +117,7 @@ const NpcForm = ({ npc, addForm, handleClose }) => {
             error={!!error}
             helperText={error ? error.message : null}
             type="text"
+            size="small"
           />
         )}
       />
@@ -150,7 +137,30 @@ const NpcForm = ({ npc, addForm, handleClose }) => {
             error={!!error}
             helperText={error ? error.message : null}
             type="text"
+            size="small"
           />
+        )}
+      />
+      <Controller
+        name="description"
+        control={control}
+        defaultValue=""
+        render={({ field: { onChange, value }, fieldState: { error } }) => (
+          <TextField
+            label="description"
+            variant="outlined"
+            multiline
+            minRows="2"
+            value={value || ''}
+            onChange={onChange}
+            onFocus={(event) => {
+              event.target.select();
+            }}
+            error={!!error}
+            helperText={error ? error.message : null}
+            type="text"
+            size="small"
+            />
         )}
       />
       <TextField
@@ -161,6 +171,7 @@ const NpcForm = ({ npc, addForm, handleClose }) => {
         value={selected}
         variant="outlined"
         onChange={(e) => setSelected(e.target.value)}
+        size="small"
       >
         <MenuItem value={null}>None</MenuItem>
         {campaigns.map((campaign) => (
@@ -169,7 +180,7 @@ const NpcForm = ({ npc, addForm, handleClose }) => {
           </MenuItem>
         ))}
       </TextField>
-      <div className="button div">
+      <div className="buttonDiv">
         <Button type="submit" variant={'contained'}>
           Submit
         </Button>

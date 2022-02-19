@@ -36,24 +36,34 @@ const NpcDetail = () => {
   if (loading) return <Loading />;
   return (
     <>
-      {!user && <h1>Please 
-        <Link 
-          to={'/auth'}
-          class={"text-blue-300"}
-          state={{ fromDashboard: true }}
-          > login</Link> to edit Npcs</h1>}
+      {!user && (
+        <h1>
+          Please
+          <Link
+            to={'/auth'}
+            class={'text-blue-300'}
+            state={{ fromDashboard: true }}
+          >
+            {' '}
+            login
+          </Link>{' '}
+          to edit Npcs
+        </h1>
+      )}
       {user && (
         <Wrapper class={wrapperStyle}>
           <img className={imageStyle} src={npc.image} alt={npc.name} />
           <div>
             <NpcForm npc={npc} key={npc.id} />
+            <div className={deleteCard}>
+              <NpcDeleteCard
+                open={open}
+                setOpen={setOpen}
+                handleDelete={handleDelete}
+                handleOpen={handleOpen}
+              />
+            </div>
           </div>
-            <NpcDeleteCard
-              open={open}
-              setOpen={setOpen}
-              handleDelete={handleDelete}
-              handleOpen={handleOpen}
-            />
         </Wrapper>
       )}
     </>
@@ -61,6 +71,12 @@ const NpcDetail = () => {
 };
 
 export default NpcDetail;
+
+const deleteCard = `
+  flex
+  justify-center
+  mb-2
+`;
 
 const imageStyle = `
   max-w-12

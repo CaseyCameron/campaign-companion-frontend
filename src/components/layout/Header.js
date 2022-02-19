@@ -56,4 +56,5 @@ const button = `
   rounded-md
   w-auto
   shadow-sm
+  px-3
 `;

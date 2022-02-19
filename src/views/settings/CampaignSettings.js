@@ -6,8 +6,6 @@ import { deleteCampaign, getCampaignById } from '../../services/routes/campaigns
 import { useCampaigns } from '../../contexts/CampaignProvider';
 import { Card, Wrapper } from '../../components/UI';
 import {
-  PlayerAddCard,
-  PlayerDeleteCard,
   PlayerCard,
   PlayerPermissionsCard,
 } from '../../components/layout/players';
@@ -71,8 +69,6 @@ const CampaignSettings = () => {
       <Card class={cardStyles}>
         <div className={title}>Players</div>
         <PlayerCard />
-        <PlayerAddCard />
-        <PlayerDeleteCard />
       </Card>
       <Card class={cardStyles}>
         <div className={title}>Player Permissions</div>
@@ -101,6 +97,7 @@ const title = `
   bg-gray-100
   rounded
   w-full
+  px-2
 `;
 
 const wrapperStyle = `

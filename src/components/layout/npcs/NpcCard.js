@@ -11,10 +11,9 @@ const NpcCard = (npc) => {
         <div className={sub}>
           <div className={raceStyle}>Race: <span className={text}>{npc.race}</span></div>
           <div>Alignment: <span className={text}>{npc.alignment}</span></div>
-          <div>Description: </div>
-          <div className={desc}>{npc.description}</div>
           <div>Affiliation: <span className={text}>{npc.affiliation}</span></div>
           <div>Status: <span className={text}>{npc.status}</span></div>
+          <div className={desc}>{npc.description}</div>
         </div>
       </Link>
     </Card>
@@ -56,6 +55,7 @@ const desc = `
   border-t-2
   border-b-2
   border-slate-300
+  pl-2
 `
 const imageStyle = `
   h-44

@@ -30,6 +30,7 @@ const CampaignForm = ({ campaign, addForm, handleClose }) => {
             error={!!error}
             helperText={error ? error.message : null}
             type="text"
+            size="small"
           />
         )}
         rules={{ required: 'Name required' }}
@@ -50,6 +51,7 @@ const CampaignForm = ({ campaign, addForm, handleClose }) => {
             error={!!error}
             helperText={error ? error.message : null}
             type="text"
+            size="small"
           />
         )}
         rules={{ required: 'Description required' }}
@@ -70,6 +72,7 @@ const CampaignForm = ({ campaign, addForm, handleClose }) => {
             error={!!error}
             helperText={error ? error.message : null}
             type="text"
+            size="small"
           />
         )}
         rules={{ required: 'Image required' }}
@@ -90,6 +93,7 @@ const CampaignForm = ({ campaign, addForm, handleClose }) => {
             error={!!error}
             helperText={error ? error.message : null}
             type="text"
+            size="small"
           />
         )}
         rules={{ required: 'Game Master required' }}

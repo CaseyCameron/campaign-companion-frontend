@@ -14,7 +14,7 @@ export const useStyles = makeStyles((theme) => ({
       width: '300px',
     },
     '& .MuiButtonBase-root': {
-      margin: theme.spacing(2),
+      margin: theme.spacing(1),
     },
   },
   link: {

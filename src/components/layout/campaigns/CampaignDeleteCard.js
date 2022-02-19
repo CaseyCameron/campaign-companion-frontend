@@ -26,6 +26,7 @@ const CampaignDeleteCard = ({
             variant="outlined"
             value={value}
             onChange={handleChange}
+            size="small"
           />
         </div>
         {error && (

@@ -1,58 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Loading from '../loading/Loading';
 import { useForm, Controller } from 'react-hook-form';
-import { addCampaign, updateCampaign } from '../../services/routes/routes';
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
-import { useCampaigns } from '../../contexts/CampaignProvider';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: theme.spacing(2),
-    paddingTop: theme.spacing(4),
-
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '300px',
-    },
-    '& .MuiButtonBase-root': {
-      margin: theme.spacing(2),
-    },
-  },
-  link: {
-    cursor: 'pointer',
-  },
-}));
+import { Button, TextField } from '@material-ui/core/';
+import { useStyles } from '../../hooks/styles-hooks';
+import { useCampaignForm } from '../../hooks/form-hooks';
 
 const CampaignForm = ({ campaign, addForm, handleClose }) => {
   const classes = useStyles();
-  const [loading, setLoading] = useState(true);
-  const { campaigns, setCampaigns } = useCampaigns();
-
   const { handleSubmit, reset, setValue, control } = useForm();
-
-  useEffect(() => {
-    if (campaign)
-      Object.entries(campaign).forEach(([key, value]) => {
-        setValue(key, value);
-      });
-    setLoading(false);
-  }, [campaign, setValue]);
-
-  const onSubmit = async (formData) => {
-    if (!addForm) updateCampaign(campaign.id, formData);
-    if (addForm) {
-      const [addedCampaign] = await addCampaign(formData);
-      setCampaigns(prevState => [...prevState, addedCampaign]);
-      handleClose(true);
-    }
-
-  };
+  const { loading, onSubmit } = useCampaignForm(campaign, addForm, handleClose, setValue);
 
   if (loading) return <Loading />;
   return (
@@ -74,6 +30,7 @@ const CampaignForm = ({ campaign, addForm, handleClose }) => {
             error={!!error}
             helperText={error ? error.message : null}
             type="text"
+            size="small"
           />
         )}
         rules={{ required: 'Name required' }}
@@ -94,6 +51,7 @@ const CampaignForm = ({ campaign, addForm, handleClose }) => {
             error={!!error}
             helperText={error ? error.message : null}
             type="text"
+            size="small"
           />
         )}
         rules={{ required: 'Description required' }}
@@ -114,6 +72,7 @@ const CampaignForm = ({ campaign, addForm, handleClose }) => {
             error={!!error}
             helperText={error ? error.message : null}
             type="text"
+            size="small"
           />
         )}
         rules={{ required: 'Image required' }}
@@ -134,6 +93,7 @@ const CampaignForm = ({ campaign, addForm, handleClose }) => {
             error={!!error}
             helperText={error ? error.message : null}
             type="text"
+            size="small"
           />
         )}
         rules={{ required: 'Game Master required' }}

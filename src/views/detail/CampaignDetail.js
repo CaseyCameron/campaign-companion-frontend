@@ -1,42 +1,41 @@
-import React, { useEffect, useState } from 'react';
-import { getCampaignNpcs } from '../../services/routes/routes';
+import React from 'react';
 import Loading from '../../components/loading/Loading';
 import NpcCard from '../../components/layout/npcs/NpcCard';
 import SearchBar from '../SearchBar';
-import { useParams } from 'react-router-dom';
+import { useFetchNpcs } from '../../hooks/hooks';
 import { useNpcs } from '../../contexts/CampaignProvider';
-import { Wrapper } from '../../components/UI';
+import { useParams } from 'react-router-dom';
 
 const CampaignDetail = () => {
-  const [loading, setLoading] = useState(true);
-  const { npcs, setNpcs } = useNpcs();
   const { id } = useParams();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await getCampaignNpcs(id);
-      setNpcs(res);
-      setLoading(false);
-    };
-    fetchData();
-  }, [id, setNpcs]);
+  const { loading } = useFetchNpcs(id);
+  const { npcs } = useNpcs();
 
   if (loading) return <Loading />;
   return (
-    <Wrapper class={wrapperStyle}>
-      <SearchBar />
-      {npcs.length === 0 && <h1>This campaign has no npcs yet.</h1>}
+    <>
+      <div className={searchStyle}>
+        <SearchBar />
+      </div>
+      <div className={npcStyle}>
+        {npcs.length === 0 && <h1>This campaign has no npcs yet.</h1>}
         {npcs.map((npc) => {
           return <NpcCard {...npc} key={npc.name} />;
         })}
-    </Wrapper>
+      </div>
+    </>
   );
 };
 
 export default CampaignDetail;
 
-const wrapperStyle = `
+const npcStyle = `
   flex
   flex-wrap
   m-2
 `;
+
+const searchStyle = `
+  flex
+  justify-between
+`

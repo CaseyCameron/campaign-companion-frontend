@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import AddCampaign from '../components/layout/campaigns/AddCampaign';
 import AddNpc from '../components/layout/npcs/AddNpc';
-import { getCampaigns } from '../services/routes/routes';
+import { getCampaigns } from '../services/routes/index';
 import Search from '../components/controls/Search';
 import { useLocation } from 'react-router-dom';
 import { useCampaigns, useNpcs } from '../contexts/CampaignProvider';
@@ -11,7 +11,7 @@ const SearchBar = () => {
   const location = useLocation();
   const [open, setOpen] = useState(false);
   const { campaigns, setCampaigns } = useCampaigns();
-  const { npcs, setNpcs } = useNpcs();
+  const { npcs, } = useNpcs();
 
   const handleOpen = () => {
     setOpen(true);
@@ -34,7 +34,7 @@ const SearchBar = () => {
   return (
     <Wrapper class={style}>
       {location.pathname === '/' && (
-        <div class={searchType}>
+        <div className={searchType}>
           <Search type={'campaigns'} data={campaigns} />
           <AddCampaign
             open={open}

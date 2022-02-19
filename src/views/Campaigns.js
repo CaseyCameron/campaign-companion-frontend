@@ -2,22 +2,24 @@ import React from 'react';
 import CampaignCard from '../components/layout/campaigns/CampaignCard';
 import Loading from '../components/loading/Loading';
 import { SearchBar } from '.';
+import { useAuth } from '../contexts/AuthProvider';
 import { useFetchCampaigns } from '../hooks/hooks';
 import { useSetSearchItems } from '../contexts/CampaignProvider';
 
 const Campaigns = () => {
-  const [campaigns, loading] = useFetchCampaigns();
-  const { searchItems, setSearchItems} = useSetSearchItems();
+  const { user } = useAuth();
+  const { loading } = useFetchCampaigns();
+  const { searchItems } = useSetSearchItems();
 
   if (loading) return <Loading />;
   return (
     <>
-      <div class={searchStyle}>
+      <div className={searchStyle}>
         <SearchBar />
       </div>
-    <div class={cpStyle}>
+    <div className={cpStyle}>
       {searchItems.map((campaign) => (
-        <CampaignCard {...campaign} key={campaign.id} />
+        <CampaignCard {...campaign} key={campaign.id} user={user} />
       ))}
     </div>
     </>
@@ -30,6 +32,7 @@ const cpStyle = `
   flex
   flex-wrap
   m-2
+  justify-center
 `;
 
 const searchStyle = `

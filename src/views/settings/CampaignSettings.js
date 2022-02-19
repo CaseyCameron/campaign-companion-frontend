@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CampaignDeleteCard } from '../../components/layout/campaigns';
-import { deleteCampaign, getCampaignById } from '../../services/routes/routes';
+import CampaignForm from '../../components/forms/CampaignForm';
+import { deleteCampaign, getCampaignById } from '../../services/routes/campaigns';
 import { useCampaigns } from '../../contexts/CampaignProvider';
 import { Card, Wrapper } from '../../components/UI';
 import {
-  PlayerAddCard,
-  PlayerDeleteCard,
   PlayerCard,
   PlayerPermissionsCard,
 } from '../../components/layout/players';
-import CampaignForm from '../../components/forms/CampaignForm';
 
 const CampaignSettings = () => {
   const { campaigns, setCampaigns } = useCampaigns();
@@ -26,7 +24,7 @@ const CampaignSettings = () => {
       setCampaigns(res);
     };
     fetchData();
-  }, [id]);
+  }, [id, setCampaigns]);
 
   const handleChange = ({ target }) => {
     setValue(target.value);
@@ -52,11 +50,11 @@ const CampaignSettings = () => {
   return (
     <Wrapper class={wrapperStyle}>
       <Card class={cardStyles}>
-        <div class={title}>Edit Campaign</div>
+        <div className={title}>Edit Campaign</div>
         <CampaignForm campaign={campaigns} addForm={false} />
       </Card>
       <Card class={cardStyles}>
-        <div class={title}>Danger Zone</div>
+        <div className={title}>Danger Zone</div>
         <CampaignDeleteCard 
           campaign={campaigns}
           error={error}
@@ -69,13 +67,11 @@ const CampaignSettings = () => {
         />
       </Card>
       <Card class={cardStyles}>
-        <div class={title}>Players</div>
+        <div className={title}>Players</div>
         <PlayerCard />
-        <PlayerAddCard />
-        <PlayerDeleteCard />
       </Card>
       <Card class={cardStyles}>
-        <div class={title}>Player Permissions</div>
+        <div className={title}>Player Permissions</div>
         <PlayerPermissionsCard />
       </Card>
     </Wrapper>
@@ -87,20 +83,21 @@ export default CampaignSettings;
 const cardStyles = `
   flex 
   flex-col 
-  items-center 
-  border-2 
-  border-solid 
+  items-center
+  shadow
   rounded 
   w-72
   sm:w-80
   m-3
   p-2
+  bg-white
 `;
 
 const title = `
   bg-gray-100
   rounded
   w-full
+  px-2
 `;
 
 const wrapperStyle = `

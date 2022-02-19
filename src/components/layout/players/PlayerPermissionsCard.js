@@ -25,4 +25,5 @@ border-solid
 border-2
 rounded-md
 w-auto
+px-2
 `;

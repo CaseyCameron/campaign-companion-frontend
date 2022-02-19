@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 // import { searchReducer } from '../hooks/hooks';
 
 const CampaignCompanionContext = createContext();

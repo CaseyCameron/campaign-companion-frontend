@@ -6,15 +6,16 @@ import { SearchBar } from './index';
 import { useSetSearchItems } from '../contexts/CampaignProvider.js';
 
 const Npcs = () => {
-  const [npcs, loading] = useFetchNpcs();
-  const { searchItems, setSearchItems } = useSetSearchItems();
+  const { loading } = useFetchNpcs();
+  const { searchItems } = useSetSearchItems();
+
   if (loading) return <Loading />;
   return (
     <>
-      <div class={searchStyle}>
+      <div className={searchStyle}>
         <SearchBar />
       </div>
-      <div class={npcStyle}>
+      <div className={npcStyle}>
         {searchItems.map((npc) => (
           <NpcCard {...npc} key={npc.id} />
         ))}
@@ -29,6 +30,7 @@ const npcStyle = `
   flex
   flex-wrap
   m-2
+  justify-center
 `;
 
 const searchStyle = `

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import NpcForm from '../../components/forms/NpcForm';
+import { deleteNpc, getNpcById } from '../../services/routes/index';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Loading from '../../components/loading/Loading';
-import { deleteNpc, getNpcById } from '../../services/routes/routes';
-import { Wrapper } from '../../components/UI';
+import NpcForm from '../../components/forms/NpcForm';
 import NpcDeleteCard from '../../components/layout/npcs/NpcDeleteCard';
-import SearchBar from '../SearchBar';
+import { useAuth } from '../../contexts/AuthProvider';
+import { Wrapper } from '../../components/UI';
 
 const NpcDetail = () => {
+  const { user } = useAuth();
   const [npc, setNpc] = useState();
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
@@ -35,23 +36,47 @@ const NpcDetail = () => {
   if (loading) return <Loading />;
   return (
     <>
-    <Wrapper class={wrapperStyle}>
-        <img className={imageStyle} src={npc.image} alt={npc.name} />
-        <div>
-          <NpcForm npc={npc} key={npc.id} />
-          <NpcDeleteCard 
-            open={open}
-            setOpen={setOpen}
-            handleDelete={handleDelete}
-            handleOpen={handleOpen}
-          />
-        </div>
-    </Wrapper>
+      {!user && (
+        <h1>
+          Please
+          <Link
+            to={'/auth'}
+            class={'text-blue-300'}
+            state={{ fromDashboard: true }}
+          >
+            {' '}
+            login
+          </Link>{' '}
+          to edit Npcs
+        </h1>
+      )}
+      {user && (
+        <Wrapper class={wrapperStyle}>
+          <img className={imageStyle} src={npc.image} alt={npc.name} />
+          <div className={npcForm}>
+            <NpcForm npc={npc} key={npc.id} />
+            <div className={deleteCard}>
+              <NpcDeleteCard
+                open={open}
+                setOpen={setOpen}
+                handleDelete={handleDelete}
+                handleOpen={handleOpen}
+              />
+            </div>
+          </div>
+        </Wrapper>
+      )}
     </>
   );
 };
 
 export default NpcDetail;
+
+const deleteCard = `
+  flex
+  justify-center
+  mb-2
+`;
 
 const imageStyle = `
   max-w-12
@@ -67,3 +92,12 @@ const wrapperStyle = `
   justify-center
 `;
 
+const npcForm = `
+  bg-white
+  rounded
+  w-80
+  sm:w-96
+  m-3
+  shadow-lg
+  pb-10
+`

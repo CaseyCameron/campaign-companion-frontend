@@ -4,19 +4,21 @@ import Card from '../../UI/Card';
 
 const NpcCard = (npc) => {
   return (
-    <Link to={`/npcs/detail/${npc.id}`}>
-      <Card class={styles}>
-        <div class={nameStyle}>{npc.name}</div>
-        <img class={imageStyle} src={npc.image} alt={npc.name} />
-        <div class={sub}>
-          <div class={raceStyle}>Race: {npc.race}</div>
-          <div>Alignment: {npc.alignment}</div>
-          <div class={desc}>Description: {npc.description}</div>
-          <div>Affiliation: {npc.affiliation}</div>
-          <div>Status: {npc.status}</div>
+    <Card class={styles}>
+      <Link className="p-4 min-w-auto" to={`/npcs/detail/${npc.id}`}>
+        <div className={title}>
+        <div className={nameStyle}>{npc.name}</div>
+        <span className={text}>{npc.race}</span>
         </div>
-      </Card>
-    </Link>
+        <img className={imageStyle} src={npc.image} alt={npc.name} />
+        <div className={sub}>
+          {npc.alignment && <div>Alignment: <span className={text}>{npc.alignment}</span></div>}
+          <div>Affiliation: <span className={text}>{npc.affiliation}</span></div>
+          <div>Status: <span className={text}>{npc.status}</span></div>
+          <div className={desc}>{npc.description}</div>
+        </div>
+      </Link>
+    </Card>
   );
 };
 
@@ -26,38 +28,54 @@ const styles = `
   flex 
   flex-col 
   items-center 
-  border-2 
-  border-solid 
+  text-center
+  bg-white
   rounded 
   w-72
   sm:w-80
   m-3
-  text-xs
   overflow-y-auto
   shadow-lg
+  text-sm
 `;
 
 const sub = `
   flex
   flex-col
   text-left
+  m-3
 `;
 
 const desc = `
-  max-h-12
+  h-24
+  font-serif
+  text-xs
+  indent-2
   overflow-auto
-`;
-
+  bg-gray-100
+  text-gray-700
+  rounded
+  p-4
+  mt-2
+`
 const imageStyle = `
   h-44
-  max-w-xs
+  p-2
   rounded
-  object-fit
-  shadow-lg
+  mx-auto
+`;
+
+const title = `
+flex
+justify-between
+border-solid
+border-b-2
+border-slate-300
 `;
 
 const nameStyle = `
-  truncate
+  text-left
+  text-clip
   p-1
 `;
 
@@ -66,10 +84,4 @@ const raceStyle = `
   indent-0.5
 `;
 
-const buttons = `
-  m-4
-`;
-
-const button = `
-  shadow-md
-`;
+const text = 'font-serif text-xs';

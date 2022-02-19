@@ -6,11 +6,13 @@ const NpcCard = (npc) => {
   return (
     <Card class={styles}>
       <Link className="p-4 min-w-auto" to={`/npcs/detail/${npc.id}`}>
+        <div className={title}>
         <div className={nameStyle}>{npc.name}</div>
+        <span className={text}>{npc.race}</span>
+        </div>
         <img className={imageStyle} src={npc.image} alt={npc.name} />
         <div className={sub}>
-          <div className={raceStyle}>Race: <span className={text}>{npc.race}</span></div>
-          <div>Alignment: <span className={text}>{npc.alignment}</span></div>
+          {npc.alignment && <div>Alignment: <span className={text}>{npc.alignment}</span></div>}
           <div>Affiliation: <span className={text}>{npc.affiliation}</span></div>
           <div>Status: <span className={text}>{npc.status}</span></div>
           <div className={desc}>{npc.description}</div>
@@ -27,8 +29,7 @@ const styles = `
   flex-col 
   items-center 
   text-center
-  border-2 
-  border-solid 
+  bg-white
   rounded 
   w-72
   sm:w-80
@@ -46,16 +47,16 @@ const sub = `
 `;
 
 const desc = `
-  max-h-24
+  h-24
   font-serif
   text-xs
   indent-2
   overflow-auto
-  border-solid
-  border-t-2
-  border-b-2
-  border-slate-300
-  pl-2
+  bg-gray-100
+  text-gray-700
+  rounded
+  p-4
+  mt-2
 `
 const imageStyle = `
   h-44
@@ -64,12 +65,18 @@ const imageStyle = `
   mx-auto
 `;
 
+const title = `
+flex
+justify-between
+border-solid
+border-b-2
+border-slate-300
+`;
+
 const nameStyle = `
+  text-left
   text-clip
   p-1
-  border-solid
-  border-b-2
-  border-slate-300
 `;
 
 const raceStyle = `

@@ -23,7 +23,7 @@ const Header = () => {
   };
 
   return (
-    <Wrapper class="flex justify-between p-4 border-b-2 border-black">
+    <Wrapper class={headerStyle}>
       <div>
         <Link to="/">{'Campaign Companion'}</Link> {`> ${location}`}
       </div>
@@ -49,6 +49,14 @@ const Header = () => {
 };
 
 export default Header;
+
+const headerStyle=`
+flex
+justify-between
+p-4
+border-b-4
+border-gray-200
+bg-white`
 
 const button = `
   border-solid

@@ -83,14 +83,14 @@ export default CampaignSettings;
 const cardStyles = `
   flex 
   flex-col 
-  items-center 
-  border-2 
-  border-solid 
+  items-center
+  shadow
   rounded 
   w-72
   sm:w-80
   m-3
   p-2
+  bg-white
 `;
 
 const title = `

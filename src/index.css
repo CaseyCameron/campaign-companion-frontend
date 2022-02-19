@@ -5,6 +5,8 @@
 
 body {
   padding-bottom: 40px;
+  background-color: rgba(0,0,0, .05);
+
 }
 
 .buttonDiv button.MuiButtonBase-root {

@@ -27,8 +27,7 @@ const styles = `
   flex-col 
   items-center
   text-center
-  border-2 
-  border-solid 
+  bg-white
   rounded 
   w-80
   sm:w-96

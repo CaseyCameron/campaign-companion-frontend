@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, createContext } from 'react';
+import { useContext, useState, useEffect, createContext, useMemo } from 'react';
 import { supabase } from '../services/client';
 
 const AuthContext = createContext();
@@ -8,7 +8,6 @@ export const AuthProvider = ({ children }) => {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		console.log('hello auth provider');
 		const session = supabase.auth.session();
 		setUser(session?.user ?? null);
 		setLoading(false);
@@ -25,12 +24,12 @@ export const AuthProvider = ({ children }) => {
 		};
 	}, []);
 
-	const value = {
+	const value = useMemo(() => ({
 		signUp: data => supabase.auth.signUp(data),
 		signIn: data => supabase.auth.signIn(data),
 		signOut: () => supabase.auth.signOut(),
 		user,
-	};
+	}), [user]);
 
 	return (
 		<AuthContext.Provider value={value}>

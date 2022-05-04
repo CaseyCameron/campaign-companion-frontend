@@ -6,7 +6,7 @@ import { useAuth } from '../../contexts/AuthProvider';
 import { Wrapper } from '../UI';
 
 const Header = () => {
-  const { user } = useAuth();
+  const { user, signOut } = useAuth();
   const [open, setOpen] = useState(false);
   const [formType, setFormType] = useState();
   const { pathname } = useLocation();
@@ -38,7 +38,7 @@ const Header = () => {
           </Button>
         )}
         {user && (
-          <Button className={button} variant="outlined" onClick={handleOpen}>
+          <Button className={button} variant="outlined" onClick={signOut}>
             Logout
           </Button>
         )}

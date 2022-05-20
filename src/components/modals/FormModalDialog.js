@@ -9,7 +9,7 @@ import { useFetchCampaigns } from '../../hooks/hooks';
 
 const FormModalDialog = ({ open, handleClose, formType, npc }) => {
   const { campaigns, loading } = useFetchCampaigns();
-
+  
   if (loading) return <Loading />;
   return (
     <Dialog open={open} onClose={handleClose}>

@@ -13,6 +13,7 @@ const AuthForm = ({ handleClose }) => {
   const [authError, setAuthError] = useState(null);
 
   useEffect(() => {
+    // this won't work for logout because there will always be a user
     if (user) {
       handleClose();
     }

@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
-import formTypes from '../../data/form-types';
 import FormModalDialog from '../modals/FormModalDialog';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthProvider';
 import { Wrapper } from '../UI';
 
 const Header = () => {
-  const { user } = useAuth();
+  const { user, signOut } = useAuth();
   const [open, setOpen] = useState(false);
+  const [formType, setFormType] = useState();
   const { pathname } = useLocation();
   let location = pathname;
 
   if (pathname === '/') location = 'campaigns';
+
+  useEffect(() => {
+    !user ? setFormType('auth') : setFormType('logout') 
+  }, [user])
 
   const handleOpen = () => {
     setOpen(true);
@@ -34,14 +38,14 @@ const Header = () => {
           </Button>
         )}
         {user && (
-          <Button class={button} variant="outlined" onClick={handleOpen}>
+          <Button className={button} variant="outlined" onClick={signOut}>
             Logout
           </Button>
         )}
         <FormModalDialog
           open={open}
           handleClose={handleClose}
-          formType={formTypes.auth}
+          formType={formType}
         />
       </div>
     </Wrapper>

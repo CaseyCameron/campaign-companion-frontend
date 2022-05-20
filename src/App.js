@@ -4,6 +4,7 @@ import { Auth, Campaigns, CampaignDetail, CampaignSettings, Npcs, NpcDetail } fr
 import { Header } from './components/layout/index';
 import Navbar from './components/controls/Navbar';
 import './App.css';
+import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute';
 
 const App = () => {
   return (
@@ -18,7 +19,11 @@ const App = () => {
           <Route path="/campaigns/detail/:id" element={<CampaignDetail />} />
           <Route
             path="/campaigns/settings/:id"
-            element={<CampaignSettings />}
+            element={
+              <ProtectedRoute>
+                <CampaignSettings />
+              </ProtectedRoute>
+            }
           />
         </Routes>
       </BrowserRouter>

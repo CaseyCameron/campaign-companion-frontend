@@ -14,3 +14,7 @@
 ## Current Table Schema/Plans
 ![image](https://user-images.githubusercontent.com/29679939/154782204-05553fa3-93bb-4948-94b1-1a1719fd3e38.png)
 
+
+generic private route
+conditional to show button only if campaign user_id = authenticated user
+redirect if unauthed user directly navigates to campaign settings
